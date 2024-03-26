@@ -1,0 +1,1 @@
+type AlignType = 'start' | 'end';

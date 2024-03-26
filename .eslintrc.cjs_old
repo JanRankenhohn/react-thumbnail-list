@@ -5,14 +5,26 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
+    'google'
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
-  plugins: ['react-refresh'],
+  plugins: [
+    'react',
+    "react-hooks",
+    'react-refresh',
+    "@typescript-eslint"
+  ],
   rules: {
     'react-refresh/only-export-components': [
       'warn',
       { allowConstantExport: true },
     ],
+    'linebreak-style':0,
+    'valid-jsdoc':0,
+    'require-jsdoc':0,
+    'max-len': 150,
+    'function-paren-newline': ["warn", { "minItems": 4 }],
+    'no-unused-vars': 'error',
   },
 }
