@@ -2,6 +2,23 @@ import { useThumbnailListItemContext } from './ThumbnailListItemContext';
 import ThumbnailListItem from './ThumbnailListItem';
 import { Breakpoint, Grid, styled } from '@mui/material';
 import BreakpointType from '../types/BreakpointType';
+import React from 'react';
+import Test from './test';
+
+const MemoTitle = React.memo(ThumbnailListItem.Title);
+const RatioWrapper = styled('div')(() => ({
+  // Assuming a 16:9 aspect ratio
+  paddingTop: '27.75%', // 9 / 16 = 0.5625
+  position: 'relative',
+  width: '100%',
+  '& > *': {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+  },
+}));
 
 export default function ThumbnailListMainContent(props: ThumbnailListMainContentProps) {
   // const children = Children.toArray(props.children);
@@ -13,19 +30,6 @@ export default function ThumbnailListMainContent(props: ThumbnailListMainContent
     lg: 12,
     xl: 12,
   };
-  const RatioWrapper = styled('div')(() => ({
-    // Assuming a 16:9 aspect ratio
-    paddingTop: '27.75%', // 9 / 16 = 0.5625
-    position: 'relative',
-    width: '100%',
-    '& > *': {
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-    },
-  }));
 
   return (
     <>
@@ -44,11 +48,12 @@ export default function ThumbnailListMainContent(props: ThumbnailListMainContent
                   // link={item.link}
                   thumbnailUrl={item.thumbnailUrl}
                 >
-                  <ThumbnailListItem.Title title={item.title}>
+                  <MemoTitle title={item.title}>
                     {/* <DateTimeRangeLabel startDateTimeStamp={event.startDateTimeStamp} endDateTimeStamp={event.endDateTimeStamp}/>
               <>{intl('label_views')}</> */}
                     {item.subTitle}
-                  </ThumbnailListItem.Title>
+                  </MemoTitle>
+
                   {item.label}
                   {/* { /** Conditionally show views / live label
               isTimestampPastNow(event.startDateTimeStamp) &&

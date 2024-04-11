@@ -13,6 +13,8 @@ export default function ThumbnailListItemTitle(props: { title: ReactNode; childr
     },
   }));
 
+  console.log('item title rerenders');
+
   const children = Children.toArray(props.children);
 
   return (
