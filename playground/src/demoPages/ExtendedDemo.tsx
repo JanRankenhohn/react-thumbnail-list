@@ -22,7 +22,7 @@ function ExtendedDemo() {
   const items = [
     {
       id: '1',
-      title: 'My First Entry',
+      title: '1 My first entry',
       subTitle: 'My first subtitle',
       thumbnailUrl:
         'https://www.creativefabrica.com/wp-content/uploads/2023/04/02/Nature-Background-Graphics-66003217-1-1-580x387.jpg',
@@ -32,8 +32,8 @@ function ExtendedDemo() {
     },
     {
       id: '2f',
-      title: 'My Second Entry',
-      subTitle: 'Subtitle für mein tollses Event',
+      title: '2 My second entry',
+      subTitle: 'Another subtitle',
       thumbnailUrl:
         'https://www.creativefabrica.com/wp-content/uploads/2023/04/02/Nature-Background-Graphics-66003217-1-1-580x387.jpg',
       name: 'Second',
@@ -54,7 +54,7 @@ function ExtendedDemo() {
   const ThumbnailList = useThumbnailList<MyItem>(itemsWithOnClick, {
     sortBy: 'name',
     sortAscending: true,
-    tag: 'isActive',
+    tag: 'id',
   });
 
   return (
