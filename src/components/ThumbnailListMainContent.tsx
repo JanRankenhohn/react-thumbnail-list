@@ -1,9 +1,8 @@
 import { useThumbnailListItemContext } from './ThumbnailListItemContext';
 import ThumbnailListItem from './ThumbnailListItem';
-import { Breakpoint, Grid, styled } from '@mui/material';
+import { Grid, styled } from '@mui/material';
 import BreakpointType from '../types/BreakpointType';
 import React from 'react';
-import Test from './test';
 
 const MemoTitle = React.memo(ThumbnailListItem.Title);
 const RatioWrapper = styled('div')(() => ({
@@ -21,7 +20,6 @@ const RatioWrapper = styled('div')(() => ({
 }));
 
 export default function ThumbnailListMainContent(props: ThumbnailListMainContentProps) {
-  // const children = Children.toArray(props.children);
   const { items } = useThumbnailListItemContext();
   const grid: BreakpointType = props.grid ?? {
     xs: 12,
@@ -33,11 +31,6 @@ export default function ThumbnailListMainContent(props: ThumbnailListMainContent
 
   return (
     <>
-      {/* {children.map((child, index) => {
-        return <Grid key={index} item xs={12} lg={6} xl={3}>
-          {child}
-        </Grid>;
-      })} */}
       <Grid container spacing={props.spacing}>
         {items.map((item) => {
           return (
@@ -48,20 +41,8 @@ export default function ThumbnailListMainContent(props: ThumbnailListMainContent
                   // link={item.link}
                   thumbnailUrl={item.thumbnailUrl}
                 >
-                  <MemoTitle title={item.title}>
-                    {/* <DateTimeRangeLabel startDateTimeStamp={event.startDateTimeStamp} endDateTimeStamp={event.endDateTimeStamp}/>
-              <>{intl('label_views')}</> */}
-                    {item.subTitle}
-                  </MemoTitle>
-
+                  <MemoTitle title={item.title}>{item.subTitle}</MemoTitle>
                   {item.label}
-                  {/* { /** Conditionally show views / live label
-              isTimestampPastNow(event.startDateTimeStamp) &&
-                        <ThumbnailListItem.InfoLabel
-                          topContent={isCurrentTimeWithinRange(event.startDateTimeStamp, event.endDateTimeStamp) ?
-                            <Typography color="success.main" variant='body2'>{intl('label_live')}</Typography> : undefined}
-                        />
-            } */}
                 </ThumbnailListItem>
               </RatioWrapper>
             </Grid>

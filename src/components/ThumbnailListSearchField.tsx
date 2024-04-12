@@ -58,7 +58,7 @@ const ThumbnailListSearchField = (props: ThumbnailListSearchFieldProps) => {
 };
 
 type ThumbnailListSearchFieldProps = {
-  align: 'start' | 'end';
+  align: AlignType;
 };
 
 ThumbnailListSearchField.defaultProps = {

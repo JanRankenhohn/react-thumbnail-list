@@ -25,6 +25,10 @@ const useThumbnailListFilterTags = <T,>() => {
     );
   };
 
+  ThumbnailListFilterTags.defaultProps = {
+    align: 'start',
+  };
+
   return ThumbnailListFilterTags;
 };
 
@@ -38,6 +42,7 @@ export type ThumbnailListItemTagType<T> = {
 type ThumbnailListFilterTagsProps<T> = {
   tags: ThumbnailListItemTagType<T>[];
   collapseBreakpoint: Breakpoint;
+  align: AlignType;
 };
 
 export default useThumbnailListFilterTags;

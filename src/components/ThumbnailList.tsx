@@ -28,7 +28,7 @@ const useThumbnailList = <T extends ThumbnailListItemInterface>(items: T[], sort
     >({ allItems: sortedItems, initialTag: 'id' });
     const { setSearchTerm, filteredItems } = useFilteredThumbnailListItems(tagFilteredItems);
 
-    console.log('list items debug');
+    console.log('Rhumbnaillist renders');
     console.log(sortedItems);
 
     useEffect(() => {
@@ -64,17 +64,11 @@ const useThumbnailList = <T extends ThumbnailListItemInterface>(items: T[], sort
   ThumbnailList.MainContent = ThumbnailListMainContent;
   ThumbnailList.Header = useTHumbnailListHeader<T>();
 
-  ThumbnailList.defaultProps = {
-    sortBy: 'Id',
-  };
-
   return ThumbnailList;
 };
 
 type ThumbnailListProps = {
   children: ReactNode;
-  // items: ThumbnailListItemInterface[];
-  // sortBy: string;
 };
 
 export default useThumbnailList;

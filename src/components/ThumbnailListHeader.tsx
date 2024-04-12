@@ -1,8 +1,8 @@
 import { Stack } from '@mui/material';
 import React, { Children, ReactNode } from 'react';
 import ThumbnailListSearchField from './ThumbnailListSearchField';
-import ThumbnailListFilterTags from './ThumbnailListFilterTags';
 import useThumbnailListHeaderSort from './ThumbnailListHeaderSort';
+import useThumbnailListFilterTags from './ThumbnailListFilterTags';
 
 const useTHumbnailListHeader = <T,>() => {
   const ThumbnailListHeader = function (props: ThumbnailListHeaderProps) {
@@ -34,7 +34,7 @@ const useTHumbnailListHeader = <T,>() => {
   };
 
   ThumbnailListHeader.SearchField = ThumbnailListSearchField;
-  ThumbnailListHeader.FilterTags = ThumbnailListFilterTags<T>();
+  ThumbnailListHeader.FilterTags = useThumbnailListFilterTags<T>();
   ThumbnailListHeader.Sort = useThumbnailListHeaderSort<T>();
 
   return ThumbnailListHeader;
