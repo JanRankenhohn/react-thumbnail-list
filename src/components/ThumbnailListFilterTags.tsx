@@ -1,31 +1,43 @@
 import ThumbnailListFilterTag from './ThumbnailListFilterTag';
-import {ThumbnailListItemTagType} from '../types/ThumbnailListItemTagType';
-import {useThumbnailListItemContext} from './ThumbnailListItemContext';
-import {Breakpoint} from '@mui/material';
+import { useThumbnailListItemContext } from './ThumbnailListItemContext';
+import { Breakpoint } from '@mui/material';
+import { ReactNode } from 'react';
 
-export default function ThumbnailListFilterTags(props: ThumbnailListFilterTagsProps) {
-  const {tagFilterCallback, tagAndCondition} = useThumbnailListItemContext();
+const useThumbnailListFilterTags = <T,>() => {
+  const ThumbnailListFilterTags = (props: ThumbnailListFilterTagsProps<T>) => {
+    const { tagFilterCallback, tagAndCondition } = useThumbnailListItemContext();
 
-  return (
-    <>
-      {props.tags.map((tag: ThumbnailListItemTagType) => {
-        return (
-          <ThumbnailListFilterTag
-            label={tag.label}
-            value={tag.value}
-            variant={tagAndCondition.tag === tag.value ? 'filled' : 'outlined'}
-            collapseBreakpoint={props.collapseBreakpoint}
-            onClickCallback={(value: string) => tagFilterCallback({tag: value, condition: tag.condition})}
-            icon={tag.icon}
-          />
-        );
-      })}
-    </>
-  );
-}
+    return (
+      <>
+        {props.tags.map((tag: ThumbnailListItemTagType<T>) => {
+          return (
+            <ThumbnailListFilterTag
+              label={tag.label}
+              value={tag.value.toString()}
+              variant={tagAndCondition.tag === tag.value ? 'filled' : 'outlined'}
+              collapseBreakpoint={props.collapseBreakpoint}
+              onClickCallback={(value: string) => tagFilterCallback({ tag: value, condition: tag.condition })}
+              icon={tag.icon}
+            />
+          );
+        })}
+      </>
+    );
+  };
 
+  return ThumbnailListFilterTags;
+};
 
-type ThumbnailListFilterTagsProps = {
-  tags: ThumbnailListItemTagType[],
-  collapseBreakpoint: Breakpoint,
-}
+export type ThumbnailListItemTagType<T> = {
+  label: string;
+  value: keyof T;
+  icon?: ReactNode;
+  condition?: (value: any) => boolean;
+};
+
+type ThumbnailListFilterTagsProps<T> = {
+  tags: ThumbnailListItemTagType<T>[];
+  collapseBreakpoint: Breakpoint;
+};
+
+export default useThumbnailListFilterTags;
