@@ -5,6 +5,6 @@ export interface ThumbnailListItemInterface {
   title: string;
   subTitle?: ReactNode;
   thumbnailUrl: string;
-  onClick?: string;
+  onClick?: (id: string) => any;
   label?: ReactNode;
 }

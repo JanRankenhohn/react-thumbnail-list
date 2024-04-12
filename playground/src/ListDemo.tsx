@@ -14,7 +14,7 @@ function ListDemo() {
       isScheduled: true,
       thumbnailUrl:
         'https://www.creativefabrica.com/wp-content/uploads/2023/04/02/Nature-Background-Graphics-66003217-1-1-580x387.jpg',
-      onClick: (item: MyItem) => navigate(`/${item.id}`),
+      onClick: (id: string) => navigate(`/${id}`),
       link: `/eventadmin/sd`,
     },
     {

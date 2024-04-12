@@ -33,14 +33,11 @@ export default function ThumbnailListMainContent(props: ThumbnailListMainContent
     <>
       <Grid container spacing={props.spacing}>
         {items.map((item) => {
+          console.log(item);
           return (
             <Grid key={item.id} item xs={grid.xs} sm={grid.sm} md={grid.md} lg={grid.lg} xl={grid.xl}>
               <RatioWrapper>
-                <ThumbnailListItem
-                  id={item.id}
-                  // link={item.link}
-                  thumbnailUrl={item.thumbnailUrl}
-                >
+                <ThumbnailListItem id={item.id} onClick={item.onClick} thumbnailUrl={item.thumbnailUrl}>
                   <MemoTitle title={item.title}>{item.subTitle}</MemoTitle>
                   {item.label}
                 </ThumbnailListItem>
