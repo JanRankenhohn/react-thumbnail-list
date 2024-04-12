@@ -10,7 +10,6 @@ const ThumbnailListItem = (props: ThumbnailListItemProps) => {
     <>
       <Card sx={{ display: 'flex' }}>
         <CardActionArea>
-          {/* <CardActionArea component={Link} to={props.link ?? ''}> */}
           <Stack direction="row" width="100%">
             {/* <ImageCropper width={{ xs: '45%', sm: '45%' }} height={{ xs: '100%', sm: '100%' }}> */}
             <img src={props.thumbnailUrl} width={'45%'} />

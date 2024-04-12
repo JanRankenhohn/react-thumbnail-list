@@ -3,8 +3,8 @@ import { ReactNode } from 'react';
 export interface ThumbnailListItemInterface {
   id: string;
   title: string;
-  subTitle: ReactNode;
+  subTitle?: ReactNode;
   thumbnailUrl: string;
-  link: string;
-  label: ReactNode;
+  onClick?: string;
+  label?: ReactNode;
 }
