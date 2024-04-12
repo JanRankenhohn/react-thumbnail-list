@@ -161,7 +161,7 @@ function ListDemo() {
     },
   ];
 
-  const ThumbnailList = useThumbnailList<MyItem>(items);
+  const ThumbnailList = useThumbnailList<MyItem>(items, { sortBy: 'isScheduled' });
 
   return (
     <>

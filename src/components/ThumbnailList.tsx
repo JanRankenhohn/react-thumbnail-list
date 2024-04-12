@@ -8,6 +8,8 @@ import useTagFilteredThumbnailListItems from '../hooks/useTagFilteredThumbnailLi
 import useFilteredThumbnailListItems from '../hooks/useFilteredThumbnailListItems';
 import useSortedThumbnailListItems from '../hooks/useSortedThumbnailListItems';
 import useTHumbnailListHeader from './ThumbnailListHeader';
+import ThumbnailListConfigurationInterface from '../config/ThumbnailListConfiguration';
+import { defaultConfiguration } from '../config/ThumbnailListConfiguration';
 
 /**
  * Main Component: Renders all sub components
@@ -15,12 +17,24 @@ import useTHumbnailListHeader from './ThumbnailListHeader';
  * @param props react children, items
  * @returns component
  */
-const useThumbnailList = <T extends ThumbnailListItemInterface>(items: T[], sortBy: string = 'id') => {
+const useThumbnailList = <T extends ThumbnailListItemInterface>(
+  items: T[],
+  config?: ThumbnailListConfigurationInterface<T>
+) => {
+  const [combinedConfig, setCombinedConfig] = useState<ThumbnailListConfigurationInterface<T>>(defaultConfiguration);
+
+  useEffect(() => {
+    setCombinedConfig({
+      ...defaultConfiguration,
+      ...config, // This will override the defaults with any props that are not undefined
+    });
+  }, [config]);
+
   const ThumbnailList = function (props: ThumbnailListProps) {
     const [listItems, setListItems] = useState(items);
     const { sortedItems, setSortBy, setSortAscending, sortAscending } = useSortedThumbnailListItems(
       listItems,
-      sortBy,
+      combinedConfig.sortBy.toString(),
       false
     );
     const { tagFilteredItems, setTagAndCondition, tagAndCondition } = useTagFilteredThumbnailListItems<
@@ -28,7 +42,7 @@ const useThumbnailList = <T extends ThumbnailListItemInterface>(items: T[], sort
     >({ allItems: sortedItems, initialTag: 'id' });
     const { setSearchTerm, filteredItems } = useFilteredThumbnailListItems(tagFilteredItems);
 
-    console.log('Rhumbnaillist renders');
+    console.log('Thumbnaillist renders');
     console.log(sortedItems);
 
     useEffect(() => {
