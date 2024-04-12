@@ -25,7 +25,7 @@ function ExtendedDemo() {
       title: '1 My first entry',
       subTitle: 'My first subtitle',
       thumbnailUrl:
-        'https://www.creativefabrica.com/wp-content/uploads/2023/04/02/Nature-Background-Graphics-66003217-1-1-580x387.jpg',
+        'https://media.istockphoto.com/id/1456795251/de/foto/steinherz-in-glitzerndem-flie%C3%9Fendem-wasser.jpg?s=1024x1024&w=is&k=20&c=u5XRhbTe_XEfuGPJJy3kBLXuF41OZvTP0ERVzra1l9o=',
       name: 'First',
       startDate: Date.now() + 86_400_000,
       isActive: false,
@@ -35,7 +35,7 @@ function ExtendedDemo() {
       title: '2 My second entry',
       subTitle: 'Another subtitle',
       thumbnailUrl:
-        'https://www.creativefabrica.com/wp-content/uploads/2023/04/02/Nature-Background-Graphics-66003217-1-1-580x387.jpg',
+        'https://media.istockphoto.com/id/1317323736/de/foto/blick-in-die-b%C3%A4ume-richtung-himmel.jpg?s=1024x1024&w=is&k=20&c=Jjq7lH60lly7z6sI0l4KcOJ-L6JiWKY5o57EEe5d0N4=',
       name: 'Second',
       startDate: Date.now() - 86_400_000,
       isActive: true,
