@@ -1,4 +1,4 @@
-import { Box, IconButton, Tooltip } from '@mui/material';
+import { Box, Breakpoint, IconButton, Tooltip } from '@mui/material';
 import SwapVertIcon from '@mui/icons-material/SwapVert';
 import SortIcon from '@mui/icons-material/Sort';
 import DropdownInput from './DropdownInput';
@@ -18,7 +18,7 @@ const useThumbnailListHeaderSort = <T,>() => {
           </Tooltip>
           <DropdownInput
             width="130px"
-            collapseBreakpoint="md"
+            collapseBreakpoint={props.muiBreakpoint}
             label={'sort'}
             defaultValue={sortBy}
             icon={
@@ -27,7 +27,7 @@ const useThumbnailListHeaderSort = <T,>() => {
               </Tooltip>
             }
             items={props.items.map((i) => {
-              return { name: i.name, value: i.value.toString() };
+              return { name: i.label, value: i.key.toString() };
             })}
             onChangeCallback={(value: string) => setSortBy(value)}
           />
@@ -38,13 +38,15 @@ const useThumbnailListHeaderSort = <T,>() => {
 
   ThumbnailListHeaderSort.defaultProps = {
     align: 'start',
+    muiBreakpoint: 'md',
   };
 
   return ThumbnailListHeaderSort;
 };
 
 type ThumbnailListHeaderSortProps<T> = {
-  items: { name: string; value: keyof T }[];
+  items: { label: string; key: keyof T }[];
+  muiBreakpoint: Breakpoint;
   align: AlignType;
 };
 

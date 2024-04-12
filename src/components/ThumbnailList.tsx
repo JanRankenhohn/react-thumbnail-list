@@ -31,7 +31,7 @@ const useThumbnailList = <T extends ThumbnailListItemInterface>(
     const { sortedItems, setSortBy, setSortAscending, sortAscending } = useSortedThumbnailListItems(
       listItems,
       combinedConfig.sortBy.toString(),
-      false
+      combinedConfig.sortAscending
     );
     const { tagFilteredItems, setTagAndCondition, tagAndCondition } = useTagFilteredThumbnailListItems<
       (typeof listItems)[0]

@@ -9,14 +9,14 @@ const useThumbnailListFilterTags = <T,>() => {
 
     return (
       <>
-        {props.tags.map((tag: ThumbnailListItemTagType<T>) => {
+        {props.tags.map((tag: ThumbnailListItemTagType<T>, index: number) => {
           return (
             <ThumbnailListFilterTag
-              key={tag.value.toString()}
+              key={`${index}_${tag.key.toString()}`}
               label={tag.label}
-              value={tag.value.toString()}
-              variant={tagAndCondition.tag === tag.value ? 'filled' : 'outlined'}
-              collapseBreakpoint={props.collapseBreakpoint}
+              value={tag.key.toString()}
+              variant={tagAndCondition.tag === tag.key ? 'filled' : 'outlined'}
+              collapseBreakpoint={props.muiCollapseBreakpoint}
               onClickCallback={(value: string) => tagFilterCallback({ tag: value, condition: tag.condition })}
               icon={tag.icon}
             />
@@ -28,6 +28,7 @@ const useThumbnailListFilterTags = <T,>() => {
 
   ThumbnailListFilterTags.defaultProps = {
     align: 'start',
+    muiCollapseBreakpoint: 'md',
   };
 
   return ThumbnailListFilterTags;
@@ -35,14 +36,14 @@ const useThumbnailListFilterTags = <T,>() => {
 
 export type ThumbnailListItemTagType<T> = {
   label: string;
-  value: keyof T;
+  key: keyof T;
   icon?: ReactNode;
   condition?: (value: any) => boolean;
 };
 
 type ThumbnailListFilterTagsProps<T> = {
   tags: ThumbnailListItemTagType<T>[];
-  collapseBreakpoint: Breakpoint;
+  muiCollapseBreakpoint: Breakpoint;
   align: AlignType;
 };
 
