@@ -12,6 +12,7 @@ const useThumbnailListFilterTags = <T,>() => {
         {props.tags.map((tag: ThumbnailListItemTagType<T>) => {
           return (
             <ThumbnailListFilterTag
+              key={tag.value.toString()}
               label={tag.label}
               value={tag.value.toString()}
               variant={tagAndCondition.tag === tag.value ? 'filled' : 'outlined'}

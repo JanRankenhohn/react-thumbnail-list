@@ -21,13 +21,6 @@ const RatioWrapper = styled('div')(() => ({
 
 export default function ThumbnailListMainContent(props: ThumbnailListMainContentProps) {
   const { items } = useThumbnailListItemContext();
-  const grid: BreakpointType = props.grid ?? {
-    xs: 12,
-    sm: 12,
-    md: 12,
-    lg: 12,
-    xl: 12,
-  };
 
   return (
     <>
@@ -35,7 +28,15 @@ export default function ThumbnailListMainContent(props: ThumbnailListMainContent
         {items.map((item) => {
           console.log(item);
           return (
-            <Grid key={item.id} item xs={grid.xs} sm={grid.sm} md={grid.md} lg={grid.lg} xl={grid.xl}>
+            <Grid
+              key={item.id}
+              item
+              xs={props.muiBreakpoints.xs}
+              sm={props.muiBreakpoints.sm}
+              md={props.muiBreakpoints.md}
+              lg={props.muiBreakpoints.lg}
+              xl={props.muiBreakpoints.xl}
+            >
               <RatioWrapper>
                 <ThumbnailListItem id={item.id} onClick={item.onClick} thumbnailUrl={item.thumbnailUrl}>
                   <MemoTitle title={item.title}>{item.subTitle}</MemoTitle>
@@ -51,10 +52,11 @@ export default function ThumbnailListMainContent(props: ThumbnailListMainContent
 }
 
 type ThumbnailListMainContentProps = {
-  grid?: BreakpointType;
+  muiBreakpoints?: BreakpointType;
   spacing: number;
 };
 
 ThumbnailListMainContent.defaultProps = {
   spacing: 2,
+  muiBreakpoints: { xs: 12, sm: 6, md: 6, lg: 4, xl: 3 },
 };

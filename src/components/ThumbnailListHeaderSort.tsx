@@ -6,7 +6,7 @@ import { useThumbnailListItemContext } from './ThumbnailListItemContext';
 
 const useThumbnailListHeaderSort = <T,>() => {
   const ThumbnailListHeaderSort = (props: ThumbnailListHeaderSortProps<T>) => {
-    const { setSortAscending, sortAscending, setSortBy } = useThumbnailListItemContext();
+    const { setSortAscending, sortAscending, setSortBy, sortBy } = useThumbnailListItemContext();
     console.log('Header sort rerenders');
     return (
       <>
@@ -20,7 +20,7 @@ const useThumbnailListHeaderSort = <T,>() => {
             width="130px"
             collapseBreakpoint="md"
             label={'sort'}
-            defaultValue="creationTimeStamp"
+            defaultValue={sortBy}
             icon={
               <Tooltip title={'sort'}>
                 <SortIcon />

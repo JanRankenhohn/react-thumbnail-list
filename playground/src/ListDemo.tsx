@@ -199,7 +199,7 @@ function ListDemo() {
               align="end"
             />
           </ThumbnailList.Header>
-          <ThumbnailList.MainContent grid={{ xs: 12, sm: 6, md: 6, lg: 4, xl: 3 }} />
+          <ThumbnailList.MainContent />
         </ThumbnailList>
       </div>
     </>
@@ -219,14 +219,3 @@ interface MyItem {
 }
 
 export default ListDemo;
-
-// import './App.css';
-// import {HelloWorld} from 'react-thumbnail-list';
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <HelloWorld />
-//     </div>
-//   );
-// }

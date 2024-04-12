@@ -21,14 +21,10 @@ const useThumbnailList = <T extends ThumbnailListItemInterface>(
   items: T[],
   config?: ThumbnailListConfigurationInterface<T>
 ) => {
-  const [combinedConfig, setCombinedConfig] = useState<ThumbnailListConfigurationInterface<T>>(defaultConfiguration);
-
-  useEffect(() => {
-    setCombinedConfig({
-      ...defaultConfiguration,
-      ...config, // This will override the defaults with any props that are not undefined
-    });
-  }, [config]);
+  const combinedConfig = {
+    ...defaultConfiguration,
+    ...config, // This will override the defaults with any props that are not undefined
+  };
 
   const ThumbnailList = function (props: ThumbnailListProps) {
     const [listItems, setListItems] = useState(items);
@@ -39,7 +35,7 @@ const useThumbnailList = <T extends ThumbnailListItemInterface>(
     );
     const { tagFilteredItems, setTagAndCondition, tagAndCondition } = useTagFilteredThumbnailListItems<
       (typeof listItems)[0]
-    >({ allItems: sortedItems, initialTag: 'id' });
+    >({ allItems: sortedItems, initialTag: combinedConfig.tag.toString() });
     const { setSearchTerm, filteredItems } = useFilteredThumbnailListItems(tagFilteredItems);
 
     console.log('Thumbnaillist renders');
@@ -65,6 +61,7 @@ const useThumbnailList = <T extends ThumbnailListItemInterface>(
             setSortAscending: setSortAscending,
             sortAscending: sortAscending,
             setSortBy: setSortBy,
+            sortBy: combinedConfig.sortBy.toString(),
           }}
         >
           <Stack direction="column" gap={2} sx={{ width: '100%', minWidth: '425px' }}>
