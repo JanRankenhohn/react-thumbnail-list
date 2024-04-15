@@ -5,7 +5,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 import { useThumbnailListItemContext } from './ThumbnailListItemContext';
 import { debounce } from 'lodash';
 
-const ThumbnailListSearchField = (props: ThumbnailListSearchFieldProps) => {
+const ThumbnailListSearchField = () => {
   const [input, setInput] = useState('');
   const [showClearIcon, setShowClearIcon] = useState('hidden');
   const { setSearchTerm } = useThumbnailListItemContext();
@@ -57,12 +57,12 @@ const ThumbnailListSearchField = (props: ThumbnailListSearchFieldProps) => {
   );
 };
 
-type ThumbnailListSearchFieldProps = {
-  align: AlignType;
-};
+// type ThumbnailListSearchFieldProps = {
+//   align: AlignType;
+// };
 
 ThumbnailListSearchField.defaultProps = {
   align: 'start',
 };
 
-export default ThumbnailListSearchField;
+export default React.memo(ThumbnailListSearchField);

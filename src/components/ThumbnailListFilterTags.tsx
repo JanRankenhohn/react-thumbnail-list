@@ -6,6 +6,8 @@ import { ReactNode } from 'react';
 function ThumbnailListFilterTags<T>(props: ThumbnailListFilterTagsProps<T>) {
   const { tagFilterCallback, tagAndCondition } = useThumbnailListItemContext();
 
+  console.log('filter taags rerenders');
+
   return (
     <>
       {props.tags.map((tag: ThumbnailListItemTagType<T>, index: number) => {

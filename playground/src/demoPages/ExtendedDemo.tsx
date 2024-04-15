@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import ThumbnailList from '../../../src/components/ThumbnailList_withT';
+import ThumbnailList from '../../../src/components/ThumbnailList';
 import SelectAllIcon from '@mui/icons-material/SelectAll';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import StopCircleIcon from '@mui/icons-material/StopCircle';

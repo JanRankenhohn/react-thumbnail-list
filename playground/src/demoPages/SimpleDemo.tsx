@@ -1,4 +1,4 @@
-import ThumbnailList from '../../../src/components/ThumbnailList_withT';
+import ThumbnailList from '../../../src/components/ThumbnailList';
 
 // Demo Data
 const items = [
