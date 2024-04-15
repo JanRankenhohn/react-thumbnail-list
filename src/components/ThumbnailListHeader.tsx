@@ -4,6 +4,7 @@ import ThumbnailListSearchField from './ThumbnailListSearchField';
 import useThumbnailListHeaderSort from './ThumbnailListHeaderSort';
 import useThumbnailListFilterTags from './ThumbnailListFilterTags';
 
+function ThumbnailListHeader<T>(props: ThumbnailListHeaderProps<T>) {
 const useTHumbnailListHeader = <T,>() => {
   const ThumbnailListHeader = function (props: ThumbnailListHeaderProps) {
     const startAlignedItems = [];
