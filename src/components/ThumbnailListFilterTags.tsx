@@ -3,35 +3,31 @@ import { useThumbnailListItemContext } from './ThumbnailListItemContext';
 import { Breakpoint } from '@mui/material';
 import { ReactNode } from 'react';
 
-const useThumbnailListFilterTags = <T,>() => {
-  const ThumbnailListFilterTags = (props: ThumbnailListFilterTagsProps<T>) => {
-    const { tagFilterCallback, tagAndCondition } = useThumbnailListItemContext();
+function ThumbnailListFilterTags<T>(props: ThumbnailListFilterTagsProps<T>) {
+  const { tagFilterCallback, tagAndCondition } = useThumbnailListItemContext();
 
-    return (
-      <>
-        {props.tags.map((tag: ThumbnailListItemTagType<T>, index: number) => {
-          return (
-            <ThumbnailListFilterTag
-              key={`${index}_${tag.key.toString()}`}
-              label={tag.label}
-              value={tag.key.toString()}
-              variant={tagAndCondition.tag === tag.key ? 'filled' : 'outlined'}
-              collapseBreakpoint={props.muiCollapseBreakpoint}
-              onClickCallback={(value: string) => tagFilterCallback({ tag: value, condition: tag.condition })}
-              icon={tag.icon}
-            />
-          );
-        })}
-      </>
-    );
-  };
+  return (
+    <>
+      {props.tags.map((tag: ThumbnailListItemTagType<T>, index: number) => {
+        return (
+          <ThumbnailListFilterTag
+            key={`${index}_${tag.key.toString()}`}
+            label={tag.label}
+            value={tag.key.toString()}
+            variant={tagAndCondition.tag === tag.key ? 'filled' : 'outlined'}
+            collapseBreakpoint={props.muiCollapseBreakpoint}
+            onClickCallback={(value: string) => tagFilterCallback({ tag: value, condition: tag.condition })}
+            icon={tag.icon}
+          />
+        );
+      })}
+    </>
+  );
+}
 
-  ThumbnailListFilterTags.defaultProps = {
-    align: 'start',
-    muiCollapseBreakpoint: 'md',
-  };
-
-  return ThumbnailListFilterTags;
+ThumbnailListFilterTags.defaultProps = {
+  align: 'start',
+  muiCollapseBreakpoint: 'md',
 };
 
 export type ThumbnailListItemTagType<T> = {
@@ -47,4 +43,4 @@ type ThumbnailListFilterTagsProps<T> = {
   align: AlignType;
 };
 
-export default useThumbnailListFilterTags;
+export default ThumbnailListFilterTags;

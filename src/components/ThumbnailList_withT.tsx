@@ -7,9 +7,9 @@ import { ThumbnailListItemContext } from './ThumbnailListItemContext';
 import useTagFilteredThumbnailListItems from '../hooks/useTagFilteredThumbnailListItems';
 import useFilteredThumbnailListItems from '../hooks/useFilteredThumbnailListItems';
 import useSortedThumbnailListItems from '../hooks/useSortedThumbnailListItems';
-import useTHumbnailListHeader from './ThumbnailListHeader';
 import ThumbnailListConfigurationInterface from '../config/ThumbnailListConfiguration';
 import { defaultConfiguration } from '../config/ThumbnailListConfiguration';
+import ThumbnailListHeader from './ThumbnailListHeader';
 
 /**
  * Main Component: Renders all sub components
@@ -68,7 +68,7 @@ function ThumbnailList<T extends ThumbnailListItemInterface>(props: ThumbnailLis
 }
 
 ThumbnailList.MainContent = ThumbnailListMainContent;
-ThumbnailList.Header = useTHumbnailListHeader<T>();
+ThumbnailList.Header = ThumbnailListHeader;
 
 type ThumbnailListProps<T> = {
   children: ReactNode;

@@ -3,6 +3,7 @@ import SimpleDemo from './demoPages/SimpleDemo';
 import ExtendedDemo from './demoPages/ExtendedDemo';
 import './App.css';
 import { AppBar, Box, Button, Toolbar, Typography } from '@mui/material';
+import HugeDataDemo from './demoPages/HugeData';
 
 function App() {
   return (
@@ -20,12 +21,16 @@ function App() {
               <Link to="/extended">
                 <Button>Extended</Button>
               </Link>
+              <Link to="/hugedata">
+                <Button>Huge Data</Button>
+              </Link>
             </Toolbar>
           </AppBar>
         </Box>
         <Routes>
           <Route path="/" element={<SimpleDemo />} />
           <Route path="/extended" element={<ExtendedDemo />} />
+          <Route path="/hugedata" element={<HugeDataDemo />} />
         </Routes>
       </Router>
     </>
