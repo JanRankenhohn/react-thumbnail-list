@@ -1,4 +1,4 @@
-import ThumbnailList from '../../../src/components/ThumbnailList_withT';
+import ThumbnailList from '../../../src/components/ThumbnailList';
 
 // Demo Data
 const items = [
@@ -19,30 +19,28 @@ const items = [
 ];
 
 function SimpleDemo() {
-  // get the list component from the hook passing your item type and items
-  // const ThumbnailList = useThumbnailList<MyItem>(items);
-
   return (
     <>
+      {/* Pass items to list */}
       <ThumbnailList items={items}>
         {/* List sub-components can be switched / removed / added as needed */}
-        {/* <ThumbnailList.Header>
+        <ThumbnailList.Header>
           <ThumbnailList.Header.SearchField />
           <ThumbnailList.Header.FilterTags tags={[{ key: 'id', label: 'all' }]} />
           <ThumbnailList.Header.Sort
-            // sort dropdown entries
             items={[
               {
-                label: 'Title', // label of the sort dropdown
-                key: 'title', // key name of MyItem for sorting
+                label: 'Title', // label of the sort entry
+                key: 'title', // key name of list item
               },
               {
                 label: 'Sub Title',
                 key: 'subTitle',
               },
             ]}
+            align="end"
           />
-        </ThumbnailList.Header> */}
+        </ThumbnailList.Header>
         <ThumbnailList.MainContent />
       </ThumbnailList>
     </>

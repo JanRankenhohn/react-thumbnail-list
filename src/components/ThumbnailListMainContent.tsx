@@ -26,7 +26,6 @@ export default function ThumbnailListMainContent(props: ThumbnailListMainContent
     <>
       <Grid container spacing={props.spacing}>
         {items.map((item) => {
-          console.log(item);
           return (
             <Grid
               key={item.id}

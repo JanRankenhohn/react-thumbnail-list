@@ -4,7 +4,7 @@ import SelectAllIcon from '@mui/icons-material/SelectAll';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import StopCircleIcon from '@mui/icons-material/StopCircle';
 
-function ExtendedDemo() {
+function HugeDataDemo() {
   // Demo Type
   type MyItem = {
     // these 4 fields are required
@@ -22,25 +22,22 @@ function ExtendedDemo() {
   const items: MyItem[] = [
     {
       id: '1',
-      title: '1 My first entry',
-      subTitle: 'My first subtitle',
+      title: 'Test Data',
+      subTitle: 'My test subtitle',
       thumbnailUrl:
         'https://media.istockphoto.com/id/1456795251/de/foto/steinherz-in-glitzerndem-flie%C3%9Fendem-wasser.jpg?s=1024x1024&w=is&k=20&c=u5XRhbTe_XEfuGPJJy3kBLXuF41OZvTP0ERVzra1l9o=',
-      name: 'First',
-      startDate: Date.now() + 86_400_000,
-      isActive: false,
-    },
-    {
-      id: '2f',
-      title: '2 My second entry',
-      subTitle: 'Another subtitle',
-      thumbnailUrl:
-        'https://media.istockphoto.com/id/1317323736/de/foto/blick-in-die-b%C3%A4ume-richtung-himmel.jpg?s=1024x1024&w=is&k=20&c=Jjq7lH60lly7z6sI0l4KcOJ-L6JiWKY5o57EEe5d0N4=',
-      name: 'Second',
-      startDate: Date.now() - 86_400_000,
       isActive: true,
+      startDate: 100,
+      name: 'Test Data',
     },
   ];
+  // create 200 list items
+  for (let i = 0; i < 200; i++) {
+    items.push({
+      ...items[0],
+      id: (i + 2).toString(),
+    });
+  }
 
   // adding onClick functions to items. This will make them clickable.
   // Here we use react-router navigate-functions as an example.
@@ -53,7 +50,7 @@ function ExtendedDemo() {
   return (
     <>
       {/* Pass items to list with custom config */}
-      <ThumbnailList items={itemsWithOnClick} config={{ sortBy: 'name', sortAscending: true, tag: 'id' }}>
+      <ThumbnailList items={itemsWithOnClick} config={{ sortBy: 'title', sortAscending: true, tag: 'id' }}>
         {/* List sub-components can be switched / removed / added as needed */}
         <ThumbnailList.Header>
           <ThumbnailList.Header.SearchField />
@@ -89,14 +86,6 @@ function ExtendedDemo() {
                 label: 'Sub Title',
                 key: 'subTitle',
               },
-              {
-                label: 'Start Date',
-                key: 'startDate',
-              },
-              {
-                label: 'Active',
-                key: 'isActive',
-              },
             ]}
             align="end" // right-align sort dropdown
             muiBreakpoint="md" // Breakpoint where sort dropdown will collapse to icon
@@ -108,4 +97,4 @@ function ExtendedDemo() {
   );
 }
 
-export default ExtendedDemo;
+export default HugeDataDemo;
