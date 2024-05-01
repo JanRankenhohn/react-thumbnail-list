@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Stack } from '@mui/material';
 import { ReactNode, useEffect, useState } from 'react';
 import ThumbnailListMainContent from './ThumbnailListMainContent';
