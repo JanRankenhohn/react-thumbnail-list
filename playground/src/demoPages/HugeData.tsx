@@ -3,6 +3,7 @@ import ThumbnailList from '../../../src/components/ThumbnailList';
 import SelectAllIcon from '@mui/icons-material/SelectAll';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import StopCircleIcon from '@mui/icons-material/StopCircle';
+import { ReactNode } from 'react';
 
 function HugeDataDemo() {
   // Demo Type
@@ -10,7 +11,7 @@ function HugeDataDemo() {
     // these 4 fields are required
     id: string;
     title: string;
-    subTitle: string;
+    subTitle: ReactNode;
     thumbnailUrl: string;
     // additional custom fields
     name: string;
@@ -23,7 +24,7 @@ function HugeDataDemo() {
     {
       id: '1',
       title: 'Test Data',
-      subTitle: 'My test subtitle',
+      subTitle: <i>'My test subtitle'</i>,
       thumbnailUrl:
         'https://media.istockphoto.com/id/1456795251/de/foto/steinherz-in-glitzerndem-flie%C3%9Fendem-wasser.jpg?s=1024x1024&w=is&k=20&c=u5XRhbTe_XEfuGPJJy3kBLXuF41OZvTP0ERVzra1l9o=',
       isActive: true,
@@ -36,6 +37,8 @@ function HugeDataDemo() {
     items.push({
       ...items[0],
       id: (i + 2).toString(),
+      title: `Test Data Entry ${i}`,
+      isActive: false,
     });
   }
 

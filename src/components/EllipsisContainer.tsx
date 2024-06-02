@@ -1,5 +1,5 @@
-import {styled} from '@mui/material';
-import {ReactNode} from 'react';
+import { styled } from '@mui/material';
+import { ReactNode } from 'react';
 
 /**
  * Creates a ellipies text with webkit css styles
@@ -11,25 +11,21 @@ export default function EllipsisContainer(props: EllipsisContainerProps) {
     [p.theme.breakpoints.up('xs')]: {
       overflow: 'hidden',
       display: '-webkit-box',
-      WebkitLineClamp: props.lineClamp.xs.toString(), /* number of lines to show */
+      WebkitLineClamp: props.lineClamp.xs.toString() /* number of lines to show */,
       WebkitBoxOrient: 'vertical',
     },
     [p.theme.breakpoints.up('sm')]: {
       overflow: 'hidden',
       display: '-webkit-box',
-      WebkitLineClamp: props.lineClamp.sm.toString(), /* number of lines to show */
-      WebkitBoxOrient: 'vertical', /* number of lines to show */
+      WebkitLineClamp: props.lineClamp.sm.toString() /* number of lines to show */,
+      WebkitBoxOrient: 'vertical' /* number of lines to show */,
     },
   }));
 
-  return (
-    <EllipsisContainer>
-      {props.children}
-    </EllipsisContainer>
-  );
+  return <EllipsisContainer>{props.children}</EllipsisContainer>;
 }
 
 type EllipsisContainerProps = {
-    lineClamp: {xs: number, sm: number},
-    children: ReactNode,
-}
+  lineClamp: { xs: number; sm: number };
+  children: ReactNode;
+};

@@ -14,14 +14,11 @@ const ThumbnailListSearchField = () => {
   const handleChange = (value: string): void => {
     setInput(value);
     setShowClearIcon(value === '' ? 'hidden' : '');
-    // setSearchTerm(value);
   };
 
-  const debouncedSetSearchTerm = useCallback(debounce(setSearchTerm, 300), []);
+  const debouncedSetSearchTerm = useCallback(debounce(setSearchTerm, 50), []);
   useEffect(() => {
-    // Only call setSearchTerm if input has changed
     debouncedSetSearchTerm(input);
-
     return () => {
       debouncedSetSearchTerm.cancel();
     };
@@ -56,10 +53,6 @@ const ThumbnailListSearchField = () => {
     </Box>
   );
 };
-
-// type ThumbnailListSearchFieldProps = {
-//   align: AlignType;
-// };
 
 ThumbnailListSearchField.defaultProps = {
   align: 'start',

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { createContext, useContext } from 'react';
 import { ThumbnailListItemInterface } from '../interfaces/ThumbnailListItemInterface';
 import { ConditionFunction } from '../utils/arrayHelper';

@@ -1,12 +1,12 @@
 import { Box, Typography, styled } from '@mui/material';
-import { ReactNode, Children } from 'react';
+import { ReactNode } from 'react';
 import EllipsisContainer from './EllipsisContainer';
 import { Stack } from '@mui/system';
 
-export default function ThumbnailListItemTitle(props: { title: ReactNode; children: ReactNode }) {
-  const StyledCardContent = styled('div')((props) => ({
-    [props.theme.breakpoints.up('xs')]: {
-      padding: props.theme.spacing(1),
+export default function ThumbnailListItemTitle(props: { title: string; subTitle: ReactNode }) {
+  const StyledCardContent = styled('div')((p) => ({
+    [p.theme.breakpoints.up('xs')]: {
+      padding: p.theme.spacing(1),
       flex: '1 0 auto',
       '&:last-child': { paddingBottom: 0 },
       overflow: 'hidden',
@@ -14,8 +14,6 @@ export default function ThumbnailListItemTitle(props: { title: ReactNode; childr
   }));
 
   console.log('item title rerenders');
-
-  const children = Children.toArray(props.children);
 
   return (
     <>
@@ -28,11 +26,9 @@ export default function ThumbnailListItemTitle(props: { title: ReactNode; childr
           </EllipsisContainer>
           <Stack direction="row" gap={1}>
             <EllipsisContainer lineClamp={{ xs: 1, sm: 2 }}>
-              {children.map((child, index) => (
-                <Typography key={index} variant="subtitle2" sx={{ fontSize: '0.84rem' }} color="text.secondary">
-                  {child}
-                </Typography>
-              ))}
+              <Typography variant="subtitle2" sx={{ fontSize: '0.84rem' }} color="text.secondary">
+                {props.subTitle}
+              </Typography>
             </EllipsisContainer>
           </Stack>
         </StyledCardContent>

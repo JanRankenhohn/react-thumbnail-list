@@ -2,9 +2,8 @@ import { useThumbnailListItemContext } from './ThumbnailListItemContext';
 import ThumbnailListItem from './ThumbnailListItem';
 import { Grid, styled } from '@mui/material';
 import BreakpointType from '../types/BreakpointType';
-import React from 'react';
+import { useMemo } from 'react';
 
-const MemoTitle = React.memo(ThumbnailListItem.Title);
 const RatioWrapper = styled('div')(() => ({
   // Assuming a 16:9 aspect ratio
   paddingTop: '27.75%', // 9 / 16 = 0.5625
@@ -21,30 +20,37 @@ const RatioWrapper = styled('div')(() => ({
 
 export default function ThumbnailListMainContent(props: ThumbnailListMainContentProps) {
   const { items } = useThumbnailListItemContext();
+  console.log('main content rerenders');
+
+  const memoizedItems = useMemo(() => {
+    return items.map((item) => (
+      <Grid
+        key={item.id}
+        item
+        xs={props.muiBreakpoints.xs}
+        sm={props.muiBreakpoints.sm}
+        md={props.muiBreakpoints.md}
+        lg={props.muiBreakpoints.lg}
+        xl={props.muiBreakpoints.xl}
+      >
+        <RatioWrapper>
+          <ThumbnailListItem
+            id={item.id}
+            thumbnailUrl={item.thumbnailUrl}
+            title={item.title}
+            subTitle={item.subTitle}
+            infoLabel={item.label}
+            onClick={item.onClick}
+          ></ThumbnailListItem>
+        </RatioWrapper>
+      </Grid>
+    ));
+  }, [items, props.muiBreakpoints]);
 
   return (
     <>
       <Grid container spacing={props.spacing}>
-        {items.map((item) => {
-          return (
-            <Grid
-              key={item.id}
-              item
-              xs={props.muiBreakpoints.xs}
-              sm={props.muiBreakpoints.sm}
-              md={props.muiBreakpoints.md}
-              lg={props.muiBreakpoints.lg}
-              xl={props.muiBreakpoints.xl}
-            >
-              <RatioWrapper>
-                <ThumbnailListItem id={item.id} onClick={item.onClick} thumbnailUrl={item.thumbnailUrl}>
-                  <MemoTitle title={item.title}>{item.subTitle}</MemoTitle>
-                  {item.label}
-                </ThumbnailListItem>
-              </RatioWrapper>
-            </Grid>
-          );
-        })}
+        {memoizedItems}
       </Grid>
     </>
   );

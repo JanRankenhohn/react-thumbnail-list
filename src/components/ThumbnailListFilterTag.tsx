@@ -1,5 +1,5 @@
-import {Breakpoint, Chip, IconButton, Tooltip, useMediaQuery, useTheme} from '@mui/material';
-import {ReactNode} from 'react';
+import { Breakpoint, Chip, IconButton, Tooltip, useMediaQuery, useTheme } from '@mui/material';
+import { ReactNode } from 'react';
 
 export default function ThumbnailListFilterTag(props: ThumbnailListFilterTagProps) {
   const theme = useTheme();
@@ -11,13 +11,15 @@ export default function ThumbnailListFilterTag(props: ThumbnailListFilterTagProp
 
   return (
     <>
-      {useMediaQuery(theme.breakpoints.up(props.collapseBreakpoint ?? 0)) || !props.icon ?
+      {useMediaQuery(theme.breakpoints.up(props.collapseBreakpoint ?? 0)) || !props.icon ? (
         <>
           <Chip
             label={props.label}
             variant={props.variant}
-            onClick={props.onClickCallback ? () => handleOnClick(props.value) : undefined} />
-        </> :
+            onClick={props.onClickCallback ? () => handleOnClick(props.value) : undefined}
+          />
+        </>
+      ) : (
         <>
           <Tooltip title={props.label}>
             <IconButton onClick={props.onClickCallback ? () => handleOnClick(props.value) : undefined}>
@@ -25,16 +27,16 @@ export default function ThumbnailListFilterTag(props: ThumbnailListFilterTagProp
             </IconButton>
           </Tooltip>
         </>
-      }
+      )}
     </>
   );
 }
 
 type ThumbnailListFilterTagProps = {
-  collapseBreakpoint?: Breakpoint,
-  label: string,
-  value: string,
-  variant: 'filled' | 'outlined',
-  icon?: ReactNode,
-  onClickCallback?: (value: string) => void,
-}
+  collapseBreakpoint?: Breakpoint;
+  label: string;
+  value: string;
+  variant: 'filled' | 'outlined';
+  icon?: ReactNode;
+  onClickCallback?: (value: string) => void;
+};

@@ -1,5 +1,5 @@
-import {styled} from '@mui/material';
-import {ReactNode} from 'react';
+import { styled } from '@mui/material';
+import { ReactNode } from 'react';
 
 /**
  * Can be used as parent component to crop a wrapped image
@@ -14,7 +14,8 @@ export default function ImageCropper(props: ImageCropperProps) {
       minWidth: props.width.xs,
       maxWidth: props.width.xs,
       height: props.height.xs,
-      overflow: 'hidden'},
+      overflow: 'hidden',
+    },
     [p.theme.breakpoints.up('sm')]: {
       minWidth: props.width.sm,
       maxwWidth: props.width.sm,
@@ -24,15 +25,13 @@ export default function ImageCropper(props: ImageCropperProps) {
 
   return (
     <>
-      <ThumbnailImageCrop>
-        {props.children}
-      </ThumbnailImageCrop>
+      <ThumbnailImageCrop>{props.children}</ThumbnailImageCrop>
     </>
   );
 }
 
 type ImageCropperProps = {
-    width: { xs: string, sm: string},
-    height: { xs: string, sm: string},
-    children: ReactNode
-}
+  width: { xs: string; sm: string };
+  height: { xs: string; sm: string };
+  children: ReactNode;
+};
