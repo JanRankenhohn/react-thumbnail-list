@@ -1,6 +1,6 @@
 import { useThumbnailListItemContext } from './ThumbnailListItemContext';
 import ThumbnailListItem from './ThumbnailListItem';
-import { Grid, styled } from '@mui/material';
+import { Box, Grid, LinearProgress, Stack, styled } from '@mui/material';
 import BreakpointType from '../types/BreakpointType';
 import { useMemo } from 'react';
 
@@ -19,7 +19,7 @@ const RatioWrapper = styled('div')(() => ({
 }));
 
 export default function ThumbnailListMainContent(props: ThumbnailListMainContentProps) {
-  const { items } = useThumbnailListItemContext();
+  const { items, isLoading } = useThumbnailListItemContext();
   console.log('main content rerenders');
 
   const memoizedItems = useMemo(() => {
@@ -49,6 +49,9 @@ export default function ThumbnailListMainContent(props: ThumbnailListMainContent
 
   return (
     <>
+      <Box sx={{ mt: 0.75, mb: 0.75 }}>
+        <LinearProgress sx={{ opacity: isLoading ? 1 : 0 }} />
+      </Box>
       <Grid container spacing={props.spacing}>
         {memoizedItems}
       </Grid>

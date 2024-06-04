@@ -22,6 +22,7 @@ type ThumbnailListItemContextType<T> = {
   sortAscending: boolean;
   sortBy: string;
   setSortBy: React.Dispatch<React.SetStateAction<string>>;
+  isLoading: boolean;
 };
 
 export const ThumbnailListItemContext = createContext<ThumbnailListItemContextType<any> | undefined>(undefined);

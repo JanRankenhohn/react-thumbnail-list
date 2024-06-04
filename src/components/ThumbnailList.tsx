@@ -34,13 +34,6 @@ function ThumbnailList<T extends ThumbnailListItemInterface>(props: ThumbnailLis
 
   console.log('Thumbnaillist renders');
 
-  useMemo(() => {
-    console.log('change');
-    if (props.items) {
-      setListItems(props.items);
-    }
-  }, [props.items]);
-
   return (
     <>
       <ThumbnailListItemContext.Provider
@@ -56,9 +49,10 @@ function ThumbnailList<T extends ThumbnailListItemInterface>(props: ThumbnailLis
           sortAscending: sortAscending,
           setSortBy: setSortBy,
           sortBy: combinedConfig.sortBy.toString(),
+          isLoading: false,
         }}
       >
-        <Stack direction="column" gap={2} sx={{ width: '100%', minWidth: '425px' }}>
+        <Stack direction="column" sx={{ width: '100%', minWidth: '425px' }}>
           {props.children}
         </Stack>
       </ThumbnailListItemContext.Provider>

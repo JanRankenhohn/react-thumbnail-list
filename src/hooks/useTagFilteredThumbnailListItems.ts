@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useMemo } from 'react';
 import { ConditionFunction, filterByTag } from '../utils/arrayHelper';
 
