@@ -34,6 +34,16 @@ function ThumbnailList<T extends ThumbnailListItemInterface>(props: ThumbnailLis
 
   console.log('Thumbnaillist renders');
 
+  useEffect(() => {
+    // Simulate the delay for rendering items
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 4100); // 300ms delay
+
+    // Cleanup the timer
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <>
       <ThumbnailListItemContext.Provider

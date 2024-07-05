@@ -27,12 +27,11 @@ type ThumbnailListItemContextType<T> = {
 
 export const ThumbnailListItemContext = createContext<ThumbnailListItemContextType<any> | undefined>(undefined);
 
-// Create a custom hook to consume the context
 export const useThumbnailListItemContext = <T>(): ThumbnailListItemContextType<T> => {
   const context = useContext(ThumbnailListItemContext);
 
   if (!context) {
-    throw new Error('useMyContext must be used within a MyContextProvider');
+    throw new Error('no context provider available');
   }
 
   return context as ThumbnailListItemContextType<T>;

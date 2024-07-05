@@ -25,8 +25,7 @@ function HugeDataDemo() {
       id: '1',
       title: 'Test Data',
       subTitle: <i>'My test subtitle'</i>,
-      thumbnailUrl:
-        'https://media.istockphoto.com/id/1456795251/de/foto/steinherz-in-glitzerndem-flie%C3%9Fendem-wasser.jpg?s=1024x1024&w=is&k=20&c=u5XRhbTe_XEfuGPJJy3kBLXuF41OZvTP0ERVzra1l9o=',
+      thumbnailUrl: 'https://picsum.photos/400/225',
       isActive: true,
       startDate: 100,
       name: 'Test Data',
@@ -39,6 +38,7 @@ function HugeDataDemo() {
       id: (i + 2).toString(),
       title: `Test Data Entry ${i}`,
       isActive: false,
+      thumbnailUrl: `${items[i].thumbnailUrl}?random=${i}`,
     });
   }
 
