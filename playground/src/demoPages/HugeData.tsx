@@ -31,7 +31,7 @@ function HugeDataDemo() {
       name: 'Test Data',
     },
   ];
-  // create 200 list items
+  // create 200 demo list items
   for (let i = 0; i < 200; i++) {
     items.push({
       ...items[0],

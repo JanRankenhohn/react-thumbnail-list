@@ -23,7 +23,7 @@ function SimpleDemo() {
     <>
       {/* Pass items to list */}
       <ThumbnailList items={items}>
-        {/* List sub-components can be switched / removed / added as needed */}
+        {/* Subb-components can be switched / removed / added as needed */}
         <ThumbnailList.Header>
           <ThumbnailList.Header.SearchField />
           <ThumbnailList.Header.FilterTags tags={[{ key: 'id', label: 'all' }]} />
@@ -41,6 +41,7 @@ function SimpleDemo() {
             align="end"
           />
         </ThumbnailList.Header>
+        {/* MainContent renders list elements */}
         <ThumbnailList.MainContent />
       </ThumbnailList>
     </>
