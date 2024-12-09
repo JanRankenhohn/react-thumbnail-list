@@ -1,5 +1,5 @@
 import React from 'react';
-import {render, screen} from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import ThumbnailListItemInfoLabel from '../components/ThumbnailListItemInfoLabel';
 
@@ -10,9 +10,7 @@ describe('ThumbnailListItemInfoLabel', () => {
     const topContent = <span data-testid="top-content">Top Content</span>;
     const bottomContent = <span data-testid="bottom-content">Bottom Content</span>;
 
-    render(
-        <ThumbnailListItemInfoLabel topContent={topContent} bottomContent={bottomContent} />,
-    );
+    render(<ThumbnailListItemInfoLabel topContent={topContent} bottomContent={bottomContent} />);
 
     // Assertions
     expect(screen.getByTestId('top-content')).toBeInTheDocument();

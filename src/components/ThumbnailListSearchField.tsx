@@ -28,7 +28,6 @@ const ThumbnailListSearchField = () => {
     <Box sx={{ marginLeft: 'auto' }}>
       <FormControl>
         <TextField
-          // sx={{input: {color: 'white'}}}
           fullWidth
           value={input}
           size="small"

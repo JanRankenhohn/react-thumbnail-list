@@ -1,5 +1,5 @@
 import { Stack } from '@mui/material';
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode, useState } from 'react';
 import ThumbnailListMainContent from './ThumbnailListMainContent';
 import { ThumbnailListItemInterface } from '../interfaces/ThumbnailListItemInterface';
 import { ThumbnailListItemContext } from './ThumbnailListItemContext';
@@ -33,16 +33,6 @@ function ThumbnailList<T extends ThumbnailListItemInterface>(props: ThumbnailLis
   const { setSearchTerm, filteredItems } = useFilteredThumbnailListItems(tagFilteredItems);
 
   console.log('Thumbnaillist renders');
-
-  useEffect(() => {
-    // Simulate the delay for rendering items
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 4100); // 300ms delay
-
-    // Cleanup the timer
-    return () => clearTimeout(timer);
-  }, []);
 
   return (
     <>

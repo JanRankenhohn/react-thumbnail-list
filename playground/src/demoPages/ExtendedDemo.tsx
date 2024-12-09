@@ -3,6 +3,7 @@ import ThumbnailList from '../../../src/components/ThumbnailList';
 import SelectAllIcon from '@mui/icons-material/SelectAll';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import StopCircleIcon from '@mui/icons-material/StopCircle';
+import useSortedThumbnailListItems from '../../../src/hooks/useSortedThumbnailListItems';
 
 function ExtendedDemo() {
   // Demo Type

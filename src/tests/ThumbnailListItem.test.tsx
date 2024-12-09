@@ -1,14 +1,14 @@
 import React from 'react';
-import {render, screen} from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import ThumbnailListItem from '../components/ThumbnailListItem';
-import {MemoryRouter} from 'react-router';
+import { MemoryRouter } from 'react-router';
 
 jest.mock('react', () => ({
   ...jest.requireActual('react'),
   Children: {
     ...jest.requireActual('react').Children,
-    toArray: jest.fn((children) => Array.isArray(children) ? children : [children]),
+    toArray: jest.fn((children) => (Array.isArray(children) ? children : [children])),
   },
 }));
 describe('ThumbnailListItem', () => {
@@ -22,20 +22,20 @@ describe('ThumbnailListItem', () => {
 
   it('renders ThumbnailListItem with correct content combined with ThumbnailListItemTitle and ThumbnailListItemInfoLabel', () => {
     render(
-        <MemoryRouter>
-          <ThumbnailListItem
-            id={event.id}
-            key={event.id}
-            // link={`/eventadmin/${event.id}`}
-            thumbnailUrl={event.posterImageUrl}
-          >
-            <ThumbnailListItem.Title title={event.name}>
-              <span data-testid="label_views">label_views</span>
-            </ThumbnailListItem.Title>
-            <ThumbnailListItem.InfoLabel topContent={<span data-testid="label_live">label_live</span>}
-            />
-          </ThumbnailListItem>,
-        </MemoryRouter>,
+      <MemoryRouter>
+        <ThumbnailListItem
+          id={event.id}
+          key={event.id}
+          // link={`/eventadmin/${event.id}`}
+          thumbnailUrl={event.posterImageUrl}
+        >
+          <ThumbnailListItem.Title title={event.name}>
+            <span data-testid="label_views">label_views</span>
+          </ThumbnailListItem.Title>
+          <ThumbnailListItem.InfoLabel topContent={<span data-testid="label_live">label_live</span>} />
+        </ThumbnailListItem>
+        ,
+      </MemoryRouter>
     );
 
     // Assertions
