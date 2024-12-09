@@ -1,5 +1,5 @@
 import { Stack } from '@mui/material';
-import React, { ReactNode, useEffect, useMemo, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import ThumbnailListMainContent from './ThumbnailListMainContent';
 import { ThumbnailListItemInterface } from '../interfaces/ThumbnailListItemInterface';
 import { ThumbnailListItemContext } from './ThumbnailListItemContext';

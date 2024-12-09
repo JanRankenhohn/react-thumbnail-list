@@ -2,6 +2,7 @@ import { styled } from '@mui/material';
 import { ReactNode } from 'react';
 
 /**
+ * Currently UNUSED
  * Can be used as parent component to crop a wrapped image
  * @param props width: width for cropping
  * height: height for cropping
