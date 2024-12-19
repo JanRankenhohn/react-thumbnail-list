@@ -9,9 +9,10 @@
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module",
-    "project": "./tsconfig.json"
+    "project": "./react-thumbnail-list/tsconfig.json"
   },
   "plugins": ["react", "prettier"],
+  "ignorePatterns": [".config/"],
   "rules": {
     "@typescript-eslint/triple-slash-reference": "off",
     "prettier/prettier": [
@@ -21,5 +22,6 @@
       }
     ],
     "react/react-in-jsx-scope": 0
-  }
+  },
+  "files": ["rollup.config.js"]
 }

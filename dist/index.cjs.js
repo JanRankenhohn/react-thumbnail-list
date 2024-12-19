@@ -140,6 +140,7 @@ var ThumbnailListItem$1 = /*#__PURE__*/React__default["default"].memo(ThumbnailL
 const RatioWrapper = material.styled('div')(() => ({
   // Assuming a 16:9 aspect ratio
   paddingTop: '27.75%',
+  // 9 / 16 = 0.5625
   position: 'relative',
   width: '100%',
   '& > *': {
