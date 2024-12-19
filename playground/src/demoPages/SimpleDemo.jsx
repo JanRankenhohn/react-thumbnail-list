@@ -1,4 +1,4 @@
-import ThumbnailList from '../../../src/components/ThumbnailList';
+import { ThumbnailList } from '@janrankenhohn/react-thumbnail-list';
 
 // Demo Data
 const items = [

@@ -23,5 +23,5 @@
     ],
     "react/react-in-jsx-scope": 0
   },
-  "files": ["rollup.config.js"]
+  "files": ["rollup.config.jsm"]
 }
