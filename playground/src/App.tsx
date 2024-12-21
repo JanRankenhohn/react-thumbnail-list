@@ -1,9 +1,9 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import SimpleDemo from './demoPages/SimpleDemo';
 import ExtendedDemo from './demoPages/ExtendedDemo';
 import './App.css';
 import { AppBar, Box, Button, Toolbar, Typography } from '@mui/material';
 import HugeDataDemo from './demoPages/HugeData';
+import SimpleDemo from './demoPages/SimpleDemo';
 
 function App() {
   return (
