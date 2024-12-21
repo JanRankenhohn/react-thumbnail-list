@@ -15,22 +15,22 @@ function App() {
               <Typography variant="h6" flexGrow={1}>
                 ThumbnailList Demo
               </Typography>
-              <Link to="/">
+              <Link to="/react-thumbnail-list">
                 <Button>Simple</Button>
               </Link>
-              <Link to="/extended">
+              <Link to="/react-thumbnail-list/extended">
                 <Button>Extended</Button>
               </Link>
-              <Link to="/hugedata">
+              <Link to="/react-thumbnail-list/hugedata">
                 <Button>Huge Data</Button>
               </Link>
             </Toolbar>
           </AppBar>
         </Box>
         <Routes>
-          <Route path="/" element={<SimpleDemo />} />
-          <Route path="/extended" element={<ExtendedDemo />} />
-          <Route path="/hugedata" element={<HugeDataDemo />} />
+          <Route path="/react-thumbnail-list" element={<SimpleDemo />} />
+          <Route path="/react-thumbnail-list/extended" element={<ExtendedDemo />} />
+          <Route path="/react-thumbnail-list/hugedata" element={<HugeDataDemo />} />
         </Routes>
       </Router>
     </>
