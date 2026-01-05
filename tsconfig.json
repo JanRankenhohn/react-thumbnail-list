@@ -27,6 +27,6 @@
     "downlevelIteration": true,
     "noImplicitReturns": false
   },
-  "include": ["src", "*.tsx", "*.ts"],
+  "include": ["src", "*.tsx", "*.ts", ".storybook"],
   "exclude": ["coverage", "config", "dist", "node_modules/**"]
 }
