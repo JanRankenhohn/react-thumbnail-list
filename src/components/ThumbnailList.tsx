@@ -9,6 +9,7 @@ import useSortedThumbnailListItems from '../hooks/useSortedThumbnailListItems';
 import ThumbnailListConfigurationInterface from '../config/ThumbnailListConfiguration';
 import { defaultConfiguration } from '../config/ThumbnailListConfiguration';
 import ThumbnailListHeader from './ThumbnailListHeader';
+import { logDev } from 'utils/logHelper';
 
 /**
  * Main Component: Renders all sub components
@@ -32,7 +33,7 @@ function ThumbnailList<T extends ThumbnailListItemInterface>(props: ThumbnailLis
   >({ allItems: sortedItems, initialTag: combinedConfig.tag.toString() });
   const { setSearchTerm, filteredItems } = useFilteredThumbnailListItems(tagFilteredItems);
 
-  console.log('Thumbnaillist renders');
+  logDev('Thumbnaillist renders');
 
   return (
     <>

@@ -3,6 +3,7 @@ import ThumbnailListItem from './ThumbnailListItem';
 import { Box, Grid, LinearProgress, styled } from '@mui/material';
 import BreakpointType from '../types/BreakpointType';
 import { useMemo } from 'react';
+import { logDev } from 'utils/logHelper';
 
 const RatioWrapper = styled('div')(() => ({
   // Assuming a 16:9 aspect ratio
@@ -20,7 +21,7 @@ const RatioWrapper = styled('div')(() => ({
 
 export default function ThumbnailListMainContent(props: ThumbnailListMainContentProps) {
   const { items, isLoading } = useThumbnailListItemContext();
-  console.log('main content rerenders');
+  logDev('main content rerenders');
 
   const memoizedItems = useMemo(() => {
     return items.map((item) => (

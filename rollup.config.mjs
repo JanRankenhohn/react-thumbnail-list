@@ -6,6 +6,7 @@ import typescript from '@rollup/plugin-typescript';
 import external from 'rollup-plugin-peer-deps-external';
 import dts from 'rollup-plugin-dts';
 import typescriptEngine from 'typescript';
+import replace from '@rollup/plugin-replace';
 
 const packageJson = JSON.parse(readFileSync('./package.json'));
 
@@ -31,6 +32,10 @@ export default defineConfig(
       external({ includeDependencies: true }),
       resolve(),
       commonjs(),
+      replace({
+        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+        preventAssignment: true,
+      }),
       typescript({
         tsconfig: './tsconfig.json',
         typescript: typescriptEngine,

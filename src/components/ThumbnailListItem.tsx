@@ -1,9 +1,10 @@
 import { Card, CardActionArea, Stack } from '@mui/material';
 import React, { ReactNode } from 'react';
 import ThumbnailListItemTitle from './ThumbnailListItemTitle';
+import { logDev } from 'utils/logHelper';
 
 const ThumbnailListItem = (props: ThumbnailListItemProps) => {
-  console.log('ThumbnailListItems renders');
+  logDev('ThumbnailListItems renders');
   return (
     <>
       <Card sx={{ display: 'flex' }}>

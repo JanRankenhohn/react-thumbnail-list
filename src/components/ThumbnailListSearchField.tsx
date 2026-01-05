@@ -4,12 +4,13 @@ import SearchIcon from '@mui/icons-material/Search';
 import ClearIcon from '@mui/icons-material/Clear';
 import { useThumbnailListItemContext } from './ThumbnailListItemContext';
 import { debounce } from 'lodash';
+import { logDev } from 'utils/logHelper';
 
 const ThumbnailListSearchField = () => {
   const [input, setInput] = useState('');
   const [showClearIcon, setShowClearIcon] = useState('hidden');
   const { setSearchTerm } = useThumbnailListItemContext();
-  console.log('Searchfield rerenders');
+  logDev('Searchfield rerenders');
 
   const handleChange = (value: string): void => {
     setInput(value);

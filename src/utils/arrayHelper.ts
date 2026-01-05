@@ -1,3 +1,5 @@
+import { logDev } from './logHelper';
+
 /**
  * Generic method that sorts an array of items based on an item key
  * @param values The array that should be sorted
@@ -23,7 +25,7 @@ function getComparableValue(value: unknown): string | number {
 
 function compareValues(a: string | number, b: string | number): number {
   if (typeof a === 'string' && typeof b === 'string') {
-    return a.localeCompare(b, undefined, {sensitivity: 'base'});
+    return a.localeCompare(b, undefined, { sensitivity: 'base' });
   } else {
     return a < b ? -1 : a > b ? 1 : 0;
   }
@@ -37,8 +39,7 @@ export function filterByTag<T>(array: T[], tagType: keyof T, condition?: Conditi
     return condition ? condition(tagValue) : !!tagValue;
   });
 
-  console.log('filter array');
-  console.log(filteredArray);
+  logDev('filter array');
+  logDev(filteredArray);
   return [...filteredArray];
 }
-

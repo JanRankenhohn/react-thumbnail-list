@@ -1,3 +1,4 @@
+import { logDev } from 'utils/logHelper';
 import ThumbnailListFilterTag from './ThumbnailListFilterTag';
 import { useThumbnailListItemContext } from './ThumbnailListItemContext';
 import { Breakpoint } from '@mui/material';
@@ -6,7 +7,7 @@ import { ReactNode } from 'react';
 function ThumbnailListFilterTags<T>(props: ThumbnailListFilterTagsProps<T>) {
   const { tagFilterCallback, tagAndCondition } = useThumbnailListItemContext();
 
-  console.log('filter tags rerenders');
+  logDev('filter tags rerenders');
 
   return (
     <>

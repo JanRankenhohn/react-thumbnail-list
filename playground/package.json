@@ -11,7 +11,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
-    "@janrankenhohn/react-thumbnail-list": "file:../janrankenhohn-react-thumbnail-list-0.6.0.tgz",
+    "@janrankenhohn/react-thumbnail-list": "file:../janrankenhohn-react-thumbnail-list-0.8.0.tgz",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.3",
