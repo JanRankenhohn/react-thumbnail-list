@@ -3,7 +3,7 @@ import ThumbnailListItem from './ThumbnailListItem';
 import { Box, Grid, LinearProgress, styled } from '@mui/material';
 import BreakpointType from '../types/BreakpointType';
 import { useMemo } from 'react';
-import { logDev } from 'utils/logHelper';
+import { logDev } from '../utils/logHelper';
 
 const RatioWrapper = styled('div')(() => ({
   // Assuming a 16:9 aspect ratio

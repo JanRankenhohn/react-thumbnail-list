@@ -1,7 +1,7 @@
 import { Card, CardActionArea, Stack } from '@mui/material';
 import React, { ReactNode } from 'react';
 import ThumbnailListItemTitle from './ThumbnailListItemTitle';
-import { logDev } from 'utils/logHelper';
+import { logDev } from '../utils/logHelper';
 
 const ThumbnailListItem = (props: ThumbnailListItemProps) => {
   logDev('ThumbnailListItems renders');

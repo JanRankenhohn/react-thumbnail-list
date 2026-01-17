@@ -4,7 +4,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import ClearIcon from '@mui/icons-material/Clear';
 import { useThumbnailListItemContext } from './ThumbnailListItemContext';
 import { debounce } from 'lodash';
-import { logDev } from 'utils/logHelper';
+import { logDev } from '../utils/logHelper';
 
 const ThumbnailListSearchField = () => {
   const [input, setInput] = useState('');

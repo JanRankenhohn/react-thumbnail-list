@@ -2,7 +2,7 @@ import { Box, Typography, styled } from '@mui/material';
 import { ReactNode } from 'react';
 import EllipsisContainer from './EllipsisContainer';
 import { Stack } from '@mui/system';
-import { logDev } from 'utils/logHelper';
+import { logDev } from '../utils/logHelper';
 
 export default function ThumbnailListItemTitle(props: { title: string; subTitle: ReactNode }) {
   const StyledCardContent = styled('div')((p) => ({

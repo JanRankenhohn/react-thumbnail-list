@@ -1,4 +1,4 @@
-import { logDev } from 'utils/logHelper';
+import { logDev } from '../utils/logHelper';
 import ThumbnailListFilterTag from './ThumbnailListFilterTag';
 import { useThumbnailListItemContext } from './ThumbnailListItemContext';
 import { Breakpoint } from '@mui/material';
@@ -12,12 +12,13 @@ function ThumbnailListFilterTags<T>(props: ThumbnailListFilterTagsProps<T>) {
   return (
     <>
       {props.tags.map((tag: ThumbnailListItemTagType<T>, index: number) => {
+        const isActive = tagAndCondition.tag === tag.key.toString() && tagAndCondition.condition === tag.condition;
         return (
           <ThumbnailListFilterTag
             key={`${index}_${tag.key.toString()}`}
             label={tag.label}
             value={tag.key.toString()}
-            variant={tagAndCondition.tag === tag.key ? 'filled' : 'outlined'}
+            variant={isActive ? 'filled' : 'outlined'}
             collapseBreakpoint={props.muiCollapseBreakpoint}
             onClickCallback={(value: string) => tagFilterCallback({ tag: value, condition: tag.condition })}
             icon={tag.icon}

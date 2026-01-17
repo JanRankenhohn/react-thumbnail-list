@@ -9,7 +9,7 @@ import useSortedThumbnailListItems from '../hooks/useSortedThumbnailListItems';
 import ThumbnailListConfigurationInterface from '../config/ThumbnailListConfiguration';
 import { defaultConfiguration } from '../config/ThumbnailListConfiguration';
 import ThumbnailListHeader from './ThumbnailListHeader';
-import { logDev } from 'utils/logHelper';
+import { logDev } from '../utils/logHelper';
 
 /**
  * Main Component: Renders all sub components
@@ -53,7 +53,7 @@ function ThumbnailList<T extends ThumbnailListItemInterface>(props: ThumbnailLis
           isLoading: false,
         }}
       >
-        <Stack direction="column" sx={{ width: '100%', minWidth: '425px' }}>
+        <Stack direction="column" sx={{ width: '100%', minWidth: '350px' }}>
           {props.children}
         </Stack>
       </ThumbnailListItemContext.Provider>
