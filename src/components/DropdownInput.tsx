@@ -14,17 +14,18 @@ import { ReactNode, useState, MouseEvent } from 'react';
 
 /**
  * Displays a generic MUI select dropdown.
- * Optinal collapses to a sort icon at a certain breakpoint
+ * Optional collapses to a sort icon at a certain breakpoint
  * @param props.label Select Label
  * @param props.width * Width of the input field
  * @param props.collapseBreakPoint * MUI breakpoint after that the select will collapse to the sort icon
  * @param props.onChangeCallback * Callback function that gets triggered once a item is selected
  * @param props.items * Array of items (name-value-pairs) that will be the select options
- * @returns Drowpdown Input Component
+ * @returns Dropdown Input Component
  */
 export default function DropdownInput(props: DropdownInputProps) {
   const [value, setValue] = useState(props.defaultValue ?? '');
   const theme = useTheme();
+  const isAboveBreakpoint = useMediaQuery(theme.breakpoints.up(props.collapseBreakpoint ?? 0));
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
   const handleChange = (value: string, name?: string) => {
@@ -35,7 +36,7 @@ export default function DropdownInput(props: DropdownInputProps) {
 
   return (
     <>
-      {useMediaQuery(theme.breakpoints.up(props.collapseBreakpoint ?? 0)) ? (
+      {isAboveBreakpoint ? (
         <FormControl sx={{ width: props.width, textAlign: 'start' }}>
           <InputLabel size="small">{props.label}</InputLabel>
           <Select

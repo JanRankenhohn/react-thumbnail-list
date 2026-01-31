@@ -17,7 +17,7 @@ const StyledEllipsisContainer = styled('div')<{ lineClamp: { xs: number; sm: num
 }));
 
 /**
- * Creates a ellipies text with webkit css styles
+ * Creates ellipsis text with webkit css styles
  * @param props lineClamp: lines till ellipses
  * @returns component
  */

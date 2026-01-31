@@ -16,32 +16,25 @@ import { ReactNode } from 'react';
  */
 export default function ThumbnailListFilterTag(props: ThumbnailListFilterTagProps) {
   const theme = useTheme();
+  const isAboveBreakpoint = useMediaQuery(theme.breakpoints.up(props.collapseBreakpoint ?? 0));
   const handleOnClick = (value: string) => {
     if (props.onClickCallback) {
       props.onClickCallback(value);
     }
   };
 
-  return (
-    <>
-      {useMediaQuery(theme.breakpoints.up(props.collapseBreakpoint ?? 0)) || !props.icon ? (
-        <>
-          <Chip
-            label={props.label}
-            variant={props.variant}
-            onClick={props.onClickCallback ? () => handleOnClick(props.value) : undefined}
-          />
-        </>
-      ) : (
-        <>
-          <Tooltip title={props.label}>
-            <IconButton onClick={props.onClickCallback ? () => handleOnClick(props.value) : undefined}>
-              {props.icon}
-            </IconButton>
-          </Tooltip>
-        </>
-      )}
-    </>
+  return isAboveBreakpoint || !props.icon ? (
+    <Chip
+      label={props.label}
+      variant={props.variant}
+      onClick={props.onClickCallback ? () => handleOnClick(props.value) : undefined}
+    />
+  ) : (
+    <Tooltip title={props.label}>
+      <IconButton onClick={props.onClickCallback ? () => handleOnClick(props.value) : undefined}>
+        {props.icon}
+      </IconButton>
+    </Tooltip>
   );
 }
 

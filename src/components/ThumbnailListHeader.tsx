@@ -40,14 +40,12 @@ const ThumbnailListHeader = function (props: ThumbnailListHeaderProps) {
   });
 
   return (
-    <>
-      <Stack direction="row" alignItems="center" justifyContent={props.justifyContent ?? 'space-between'} gap={2}>
-        <Stack direction="row" alignItems="center" gap={2} justifyContent="start">
-          {startAlignedItems}
-        </Stack>
-        {endAlignedItems}
+    <Stack direction="row" alignItems="center" justifyContent={props.justifyContent ?? 'space-between'} gap={2}>
+      <Stack direction="row" alignItems="center" gap={2} justifyContent="start">
+        {startAlignedItems}
       </Stack>
-    </>
+      {endAlignedItems}
+    </Stack>
   );
 };
 

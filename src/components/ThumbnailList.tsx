@@ -53,28 +53,26 @@ function ThumbnailList<T extends ThumbnailListItemInterface>(props: ThumbnailLis
   logDev('Thumbnaillist renders');
 
   return (
-    <>
-      <ThumbnailListItemContext.Provider
-        value={{
-          items: filteredItems,
-          setItems: setListItems,
-          originalItems: listItems,
-          setOriginalItems: setListItems,
-          tagFilterCallback: setTagAndCondition,
-          tagAndCondition: tagAndCondition,
-          setSearchTerm: setSearchTerm,
-          setSortAscending: setSortAscending,
-          sortAscending: sortAscending,
-          setSortBy: setSortBy,
-          sortBy: combinedConfig.sortBy.toString(),
-          isLoading: combinedConfig.isLoading ?? false,
-        }}
-      >
-        <Stack direction="column" sx={{ width: '100%', minWidth: '350px' }}>
-          {props.children}
-        </Stack>
-      </ThumbnailListItemContext.Provider>
-    </>
+    <ThumbnailListItemContext.Provider
+      value={{
+        items: filteredItems,
+        setItems: setListItems,
+        originalItems: listItems,
+        setOriginalItems: setListItems,
+        tagFilterCallback: setTagAndCondition,
+        tagAndCondition: tagAndCondition,
+        setSearchTerm: setSearchTerm,
+        setSortAscending: setSortAscending,
+        sortAscending: sortAscending,
+        setSortBy: setSortBy,
+        sortBy: combinedConfig.sortBy.toString(),
+        isLoading: combinedConfig.isLoading ?? false,
+      }}
+    >
+      <Stack direction="column" sx={{ width: '100%', minWidth: '350px' }}>
+        {props.children}
+      </Stack>
+    </ThumbnailListItemContext.Provider>
   );
 }
 

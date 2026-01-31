@@ -25,23 +25,21 @@ const THUMBNAIL_IMAGE_WIDTH = '38.2%';
 const ThumbnailListItem = (props: ThumbnailListItemProps) => {
   logDev('ThumbnailListItems renders');
   return (
-    <>
-      <Card sx={{ display: 'flex' }}>
-        <CardActionArea 
-          disabled={!props.onClick} 
-          onClick={props.onClick ? () => props.onClick(props.id) : undefined}
-          aria-label={props.onClick ? `View ${props.title}` : undefined}
-        >
-          <Stack direction="row" width="100%">
-            <img src={props.thumbnailUrl} width={THUMBNAIL_IMAGE_WIDTH} alt={props.title} style={{ objectFit: 'cover', height: '100%' }} />
-            <Stack direction="row" justifyContent="space-between" flex={1} gap={1}>
-              <ThumbnailListItemTitle title={props.title} subTitle={props.subTitle} />
-              {props.infoLabel}
-            </Stack>
+    <Card sx={{ display: 'flex' }}>
+      <CardActionArea 
+        disabled={!props.onClick} 
+        onClick={props.onClick ? () => props.onClick(props.id) : undefined}
+        aria-label={props.onClick ? `View ${props.title}` : undefined}
+      >
+        <Stack direction="row" width="100%">
+          <img src={props.thumbnailUrl} width={THUMBNAIL_IMAGE_WIDTH} alt={props.title} style={{ objectFit: 'cover', height: '100%' }} />
+          <Stack direction="row" justifyContent="space-between" flex={1} gap={1}>
+            <ThumbnailListItemTitle title={props.title} subTitle={props.subTitle} />
+            {props.infoLabel}
           </Stack>
-        </CardActionArea>
-      </Card>
-    </>
+        </Stack>
+      </CardActionArea>
+    </Card>
   );
 };
 
