@@ -1,47 +1,58 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import '@testing-library/jest-dom';
+import { describe, it, expect, vi } from 'vitest';
+import { render, screen, fireEvent } from '@testing-library/react';
 import ThumbnailListItem from '../components/ThumbnailListItem';
-import { MemoryRouter } from 'react-router';
 
-jest.mock('react', () => ({
-  ...jest.requireActual('react'),
-  Children: {
-    ...jest.requireActual('react').Children,
-    toArray: jest.fn((children) => (Array.isArray(children) ? children : [children])),
-  },
-}));
 describe('ThumbnailListItem', () => {
-  const event = {
+  const defaultProps = {
     id: '123',
-    name: 'Test Event',
-    startDateTimeStamp: new Date().getTime() - 10000, // Past timestamp
-    endDateTimeStamp: new Date().getTime() + 10000, // Future timestamp
-    posterImageUrl: 'https://example.com/poster.jpg',
+    thumbnailUrl: '/test.jpg',
+    title: 'Test Title',
+    subTitle: 'Test Subtitle',
+    infoLabel: <span>Info</span>,
   };
 
-  it('renders ThumbnailListItem with correct content combined with ThumbnailListItemTitle and ThumbnailListItemInfoLabel', () => {
-    render(
-      <MemoryRouter>
-        <ThumbnailListItem
-          id={event.id}
-          key={event.id}
-          // link={`/eventadmin/${event.id}`}
-          thumbnailUrl={event.posterImageUrl}
-        >
-          <ThumbnailListItem.Title title={event.name}>
-            <span data-testid="label_views">label_views</span>
-          </ThumbnailListItem.Title>
-          <ThumbnailListItem.InfoLabel topContent={<span data-testid="label_live">label_live</span>} />
-        </ThumbnailListItem>
-        ,
-      </MemoryRouter>
-    );
+  it('renders title and subtitle', () => {
+    render(<ThumbnailListItem {...defaultProps} />);
 
-    // Assertions
-    expect(screen.getByRole('img')).toBeInTheDocument();
-    expect(screen.getByText('Test Event')).toBeInTheDocument();
-    expect(screen.getByText('label_views')).toBeInTheDocument();
-    expect(screen.getByText('label_live')).toBeInTheDocument();
+    expect(screen.getByText('Test Title')).toBeInTheDocument();
+    expect(screen.getByText('Test Subtitle')).toBeInTheDocument();
+  });
+
+  it('renders the thumbnail image', () => {
+    render(<ThumbnailListItem {...defaultProps} />);
+
+    const image = screen.getByRole('img');
+    expect(image).toHaveAttribute('src', '/test.jpg');
+  });
+
+  it('renders info label', () => {
+    render(<ThumbnailListItem {...defaultProps} />);
+
+    expect(screen.getByText('Info')).toBeInTheDocument();
+  });
+
+  it('calls onClick with id when clicked', () => {
+    const onClick = vi.fn();
+
+    render(<ThumbnailListItem {...defaultProps} onClick={onClick} />);
+
+    fireEvent.click(screen.getByRole('button'));
+
+    expect(onClick).toHaveBeenCalledTimes(1);
+    expect(onClick).toHaveBeenCalledWith('123');
+  });
+
+  it('disables click when onClick is not provided', () => {
+    const onClick = vi.fn();
+    const { getByRole, rerender } = render(<ThumbnailListItem {...defaultProps} onClick={undefined} />);
+    const button = getByRole('button');
+
+    // Clicking should not throw, and nothing should happen
+    fireEvent.click(button);
+
+    // Now render with onClick
+    rerender(<ThumbnailListItem {...defaultProps} onClick={onClick} />);
+    fireEvent.click(button);
+    expect(onClick).toHaveBeenCalledTimes(1);
   });
 });
