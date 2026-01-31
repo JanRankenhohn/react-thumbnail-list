@@ -1,1 +1,1 @@
-type AlignType = 'start' | 'end';
+export type AlignType = 'start' | 'end';

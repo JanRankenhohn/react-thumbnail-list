@@ -3,15 +3,20 @@ import ThumbnailListFilterTag from './ThumbnailListFilterTag';
 import { useThumbnailListItemContext } from './ThumbnailListItemContext';
 import { Breakpoint } from '@mui/material';
 import { ReactNode } from 'react';
+import { AlignType } from '../types/AlignType';
 
-function ThumbnailListFilterTags<T>(props: ThumbnailListFilterTagsProps<T>) {
+function ThumbnailListFilterTags<T>({
+  tags,
+  muiCollapseBreakpoint = 'md',
+  align = 'start',
+}: ThumbnailListFilterTagsProps<T>) {
   const { tagFilterCallback, tagAndCondition } = useThumbnailListItemContext();
 
   logDev('filter tags rerenders');
 
   return (
     <>
-      {props.tags.map((tag: ThumbnailListItemTagType<T>, index: number) => {
+      {tags.map((tag: ThumbnailListItemTagType<T>, index: number) => {
         const isActive = tagAndCondition.tag === tag.key.toString() && tagAndCondition.condition === tag.condition;
         return (
           <ThumbnailListFilterTag
@@ -19,7 +24,7 @@ function ThumbnailListFilterTags<T>(props: ThumbnailListFilterTagsProps<T>) {
             label={tag.label}
             value={tag.key.toString()}
             variant={isActive ? 'filled' : 'outlined'}
-            collapseBreakpoint={props.muiCollapseBreakpoint}
+            collapseBreakpoint={muiCollapseBreakpoint}
             onClickCallback={(value: string) => tagFilterCallback({ tag: value, condition: tag.condition })}
             icon={tag.icon}
           />
@@ -28,11 +33,6 @@ function ThumbnailListFilterTags<T>(props: ThumbnailListFilterTagsProps<T>) {
     </>
   );
 }
-
-ThumbnailListFilterTags.defaultProps = {
-  align: 'start',
-  muiCollapseBreakpoint: 'md',
-};
 
 export type ThumbnailListItemTagType<T> = {
   label: string;
@@ -43,8 +43,8 @@ export type ThumbnailListItemTagType<T> = {
 
 type ThumbnailListFilterTagsProps<T> = {
   tags: ThumbnailListItemTagType<T>[];
-  muiCollapseBreakpoint: Breakpoint;
-  align: AlignType;
+  muiCollapseBreakpoint?: Breakpoint;
+  align?: AlignType;
 };
 
 export default ThumbnailListFilterTags;

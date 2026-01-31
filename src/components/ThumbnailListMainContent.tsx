@@ -6,8 +6,7 @@ import { useMemo } from 'react';
 import { logDev } from '../utils/logHelper';
 
 const RatioWrapper = styled('div')(() => ({
-  // Assuming a 16:9 aspect ratio
-  paddingTop: '27.75%', // 9 / 16 = 0.5625
+  paddingTop: '27.75%', // responsive card height
   position: 'relative',
   width: '100%',
   '& > *': {
@@ -19,7 +18,10 @@ const RatioWrapper = styled('div')(() => ({
   },
 }));
 
-export default function ThumbnailListMainContent(props: ThumbnailListMainContentProps) {
+export default function ThumbnailListMainContent({
+  spacing = 2,
+  muiBreakpoints = { xs: 12, sm: 6, md: 6, lg: 4, xl: 3 },
+}: ThumbnailListMainContentProps) {
   const { items, isLoading } = useThumbnailListItemContext();
   logDev('main content rerenders');
 
@@ -28,11 +30,11 @@ export default function ThumbnailListMainContent(props: ThumbnailListMainContent
       <Grid
         key={item.id}
         item
-        xs={props.muiBreakpoints.xs}
-        sm={props.muiBreakpoints.sm}
-        md={props.muiBreakpoints.md}
-        lg={props.muiBreakpoints.lg}
-        xl={props.muiBreakpoints.xl}
+        xs={muiBreakpoints.xs}
+        sm={muiBreakpoints.sm}
+        md={muiBreakpoints.md}
+        lg={muiBreakpoints.lg}
+        xl={muiBreakpoints.xl}
       >
         <RatioWrapper>
           <ThumbnailListItem
@@ -46,14 +48,14 @@ export default function ThumbnailListMainContent(props: ThumbnailListMainContent
         </RatioWrapper>
       </Grid>
     ));
-  }, [items, props.muiBreakpoints]);
+  }, [items, muiBreakpoints]);
 
   return (
     <>
       <Box sx={{ mt: 0.75, mb: 0.75 }}>
         <LinearProgress sx={{ opacity: isLoading ? 1 : 0 }} />
       </Box>
-      <Grid container spacing={props.spacing}>
+      <Grid container spacing={spacing}>
         {memoizedItems}
       </Grid>
     </>
@@ -62,10 +64,5 @@ export default function ThumbnailListMainContent(props: ThumbnailListMainContent
 
 type ThumbnailListMainContentProps = {
   muiBreakpoints?: BreakpointType;
-  spacing: number;
-};
-
-ThumbnailListMainContent.defaultProps = {
-  spacing: 2,
-  muiBreakpoints: { xs: 12, sm: 6, md: 6, lg: 4, xl: 3 },
+  spacing?: number;
 };

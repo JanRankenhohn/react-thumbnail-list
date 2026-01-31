@@ -10,12 +10,12 @@ type ThumbnailListItemContextType<T> = {
   tagFilterCallback: React.Dispatch<
     React.SetStateAction<{
       tag: string;
-      condition: ConditionFunction<any> | undefined;
+      condition: ConditionFunction<unknown> | undefined;
     }>
   >;
   tagAndCondition: {
     tag: string;
-    condition: ConditionFunction<any> | undefined;
+    condition: ConditionFunction<unknown> | undefined;
   };
   setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
   setSortAscending: React.Dispatch<React.SetStateAction<boolean>>;
@@ -25,7 +25,7 @@ type ThumbnailListItemContextType<T> = {
   isLoading: boolean;
 };
 
-export const ThumbnailListItemContext = createContext<ThumbnailListItemContextType<any> | undefined>(undefined);
+export const ThumbnailListItemContext = createContext<ThumbnailListItemContextType<unknown> | undefined>(undefined);
 
 export const useThumbnailListItemContext = <T>(): ThumbnailListItemContextType<T> => {
   const context = useContext(ThumbnailListItemContext);

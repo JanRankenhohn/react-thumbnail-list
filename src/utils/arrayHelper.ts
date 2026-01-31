@@ -33,7 +33,7 @@ function compareValues(a: string | number, b: string | number): number {
 
 export type ConditionFunction<T> = (value: T) => boolean;
 
-export function filterByTag<T>(array: T[], tagType: keyof T, condition?: ConditionFunction<unknown>): T[] {
+export function filterByTag<T>(array: T[], tagType: keyof T, condition?: ConditionFunction<T[keyof T]>): T[] {
   const filteredArray = array.filter((item) => {
     const tagValue = item[tagType];
     return condition ? condition(tagValue) : !!tagValue;

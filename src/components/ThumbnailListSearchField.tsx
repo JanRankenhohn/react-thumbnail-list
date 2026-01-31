@@ -54,8 +54,4 @@ const ThumbnailListSearchField = () => {
   );
 };
 
-ThumbnailListSearchField.defaultProps = {
-  align: 'start',
-};
-
 export default React.memo(ThumbnailListSearchField);
