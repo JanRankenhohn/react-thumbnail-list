@@ -3,12 +3,10 @@ import ThumbnailListFilterTag from './ThumbnailListFilterTag';
 import { useThumbnailListItemContext } from './ThumbnailListItemContext';
 import { Breakpoint } from '@mui/material';
 import { ReactNode } from 'react';
-import { AlignType } from '../types/AlignType';
 
 function ThumbnailListFilterTags<T>({
   tags,
   muiCollapseBreakpoint = 'md',
-  align = 'start',
 }: ThumbnailListFilterTagsProps<T>) {
   const { tagFilterCallback, tagAndCondition } = useThumbnailListItemContext();
 
@@ -44,7 +42,6 @@ export type ThumbnailListItemTagType<T> = {
 type ThumbnailListFilterTagsProps<T> = {
   tags: ThumbnailListItemTagType<T>[];
   muiCollapseBreakpoint?: Breakpoint;
-  align?: AlignType;
 };
 
 export default ThumbnailListFilterTags;

@@ -4,12 +4,10 @@ import SortIcon from '@mui/icons-material/Sort';
 import DropdownInput from './DropdownInput';
 import { useThumbnailListItemContext } from './ThumbnailListItemContext';
 import { logDev } from '../utils/logHelper';
-import { AlignType } from '../types/AlignType';
 
 function ThumbnailListHeaderSort<T>({
   items,
   muiBreakpoint = 'md',
-  align = 'start',
 }: ThumbnailListHeaderSortProps<T>) {
   const { setSortAscending, sortAscending, setSortBy, sortBy } = useThumbnailListItemContext();
   logDev('Header sort rerenders');
@@ -44,7 +42,6 @@ function ThumbnailListHeaderSort<T>({
 type ThumbnailListHeaderSortProps<T> = {
   items: { label: string; key: keyof T }[];
   muiBreakpoint?: Breakpoint;
-  align?: AlignType;
 };
 
 export default ThumbnailListHeaderSort;

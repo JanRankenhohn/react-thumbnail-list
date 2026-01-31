@@ -3,6 +3,12 @@ import React, { ReactNode } from 'react';
 import ThumbnailListItemTitle from './ThumbnailListItemTitle';
 import { logDev } from '../utils/logHelper';
 
+/**
+ * Width percentage for thumbnail image in list items.
+ * Value based on golden ratio proportion for optimal visual balance.
+ */
+const THUMBNAIL_IMAGE_WIDTH = '38.2%';
+
 const ThumbnailListItem = (props: ThumbnailListItemProps) => {
   logDev('ThumbnailListItems renders');
   return (
@@ -10,7 +16,7 @@ const ThumbnailListItem = (props: ThumbnailListItemProps) => {
       <Card sx={{ display: 'flex' }}>
         <CardActionArea disabled={!props.onClick} onClick={props.onClick ? () => props.onClick(props.id) : undefined}>
           <Stack direction="row" width="100%">
-            <img src={props.thumbnailUrl} width={'38.2%'} alt={props.title} style={{ objectFit: 'cover', height: '100%' }} />
+            <img src={props.thumbnailUrl} width={THUMBNAIL_IMAGE_WIDTH} alt={props.title} style={{ objectFit: 'cover', height: '100%' }} />
             <Stack direction="row" justifyContent="space-between" flex={1} gap={1}>
               <ThumbnailListItemTitle title={props.title} subTitle={props.subTitle} />
               {props.infoLabel}

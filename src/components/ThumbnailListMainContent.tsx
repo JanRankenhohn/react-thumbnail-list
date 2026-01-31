@@ -5,8 +5,14 @@ import BreakpointType from '../types/BreakpointType';
 import { useMemo } from 'react';
 import { logDev } from '../utils/logHelper';
 
+/**
+ * Padding percentage used to create responsive card height with fixed aspect ratio.
+ * This percentage ensures consistent card dimensions across different screen sizes.
+ */
+const CARD_ASPECT_RATIO_PADDING = '27.75%';
+
 const RatioWrapper = styled('div')(() => ({
-  paddingTop: '27.75%', // responsive card height
+  paddingTop: CARD_ASPECT_RATIO_PADDING,
   position: 'relative',
   width: '100%',
   '& > *': {
