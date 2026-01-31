@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useMemo } from 'react';
 import { ThumbnailListItemInterface } from '../interfaces/ThumbnailListItemInterface';
 
 /**
@@ -28,15 +28,14 @@ const usePagedThumbnailListItems = (
 ) => {
   const [entriesPerPage, setEntriesPerPage] = useState(initialEntriesPerPage);
   const [page, setPage] = useState(initialPage);
-  const [filteredItems, setFilteredItems] = useState(allItems);
 
-  useEffect(() => {
+  const filteredItems = useMemo(() => {
     const startIndex = (page - 1) * entriesPerPage;
     if (startIndex >= allItems.length) {
-      setFilteredItems([]);
+      return [];
     }
     const endIndex = page * entriesPerPage;
-    setFilteredItems(allItems.slice(startIndex, Math.min(endIndex, allItems.length)));
+    return allItems.slice(startIndex, Math.min(endIndex, allItems.length));
   }, [allItems, entriesPerPage, page]);
 
   return { entriesPerPage, setEntriesPerPage, page, setPage, filteredItems };

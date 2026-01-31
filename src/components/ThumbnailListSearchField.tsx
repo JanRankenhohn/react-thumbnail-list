@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Box, FormControl, IconButton, InputAdornment, TextField } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import ClearIcon from '@mui/icons-material/Clear';
@@ -26,12 +26,17 @@ const ThumbnailListSearchField = () => {
   const { setSearchTerm } = useThumbnailListItemContext();
   logDev('Searchfield rerenders');
 
+  // Create debounced function that's stable across renders unless setSearchTerm changes
+  const debouncedSetSearchTerm = useMemo(
+    () => debounce((value: string) => setSearchTerm(value), 250),
+    [setSearchTerm]
+  );
+
   const handleChange = (value: string): void => {
     setInput(value);
     setShowClearIcon(value === '' ? 'hidden' : '');
   };
 
-  const debouncedSetSearchTerm = useCallback(debounce(setSearchTerm, 50), []);
   useEffect(() => {
     debouncedSetSearchTerm(input);
     return () => {

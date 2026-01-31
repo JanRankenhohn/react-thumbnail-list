@@ -67,7 +67,7 @@ function ThumbnailList<T extends ThumbnailListItemInterface>(props: ThumbnailLis
           sortAscending: sortAscending,
           setSortBy: setSortBy,
           sortBy: combinedConfig.sortBy.toString(),
-          isLoading: false,
+          isLoading: combinedConfig.isLoading ?? false,
         }}
       >
         <Stack direction="column" sx={{ width: '100%', minWidth: '350px' }}>

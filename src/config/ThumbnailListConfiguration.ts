@@ -9,11 +9,13 @@ import { ThumbnailListItemInterface } from '../interfaces/ThumbnailListItemInter
  * @property {keyof T} [sortBy] - The property key to sort items by
  * @property {boolean} [sortAscending] - Whether to sort in ascending order (true) or descending (false)
  * @property {keyof T} [tag] - The property key used for tag-based filtering
+ * @property {boolean} [isLoading] - Loading state indicator for the list
  */
 export default interface ThumbnailListConfigurationInterface<T> {
   sortBy?: keyof T;
   sortAscending?: boolean;
   tag?: keyof T;
+  isLoading?: boolean;
 }
 
 /**
