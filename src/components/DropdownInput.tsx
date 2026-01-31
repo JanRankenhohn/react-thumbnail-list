@@ -10,7 +10,7 @@ import {
   useMediaQuery,
   useTheme,
 } from '@mui/material';
-import { ReactNode, useState } from 'react';
+import { ReactNode, useState, MouseEvent } from 'react';
 
 /**
  * Displays a generic MUI select dropdown.
@@ -25,7 +25,7 @@ import { ReactNode, useState } from 'react';
 export default function DropdownInput(props: DropdownInputProps) {
   const [value, setValue] = useState(props.defaultValue ?? '');
   const theme = useTheme();
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
   const handleChange = (value: string, name?: string) => {
     setValue(value as string);
@@ -55,8 +55,7 @@ export default function DropdownInput(props: DropdownInputProps) {
         </FormControl>
       ) : (
         <IconButton
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          onClick={(event: any) => setAnchorEl(event.currentTarget)}
+          onClick={(event: MouseEvent<HTMLButtonElement>) => setAnchorEl(event.currentTarget)}
         >
           {props.icon}
         </IconButton>

@@ -7,12 +7,12 @@ import { ConditionFunction, filterByTag } from '../utils/arrayHelper';
  * @template T - The type of items in the array
  * @property {T[]} allItems - Array of all items to filter
  * @property {string} initialTag - Initial property key to filter by
- * @property {ConditionFunction<any>} [initialCondition] - Optional initial filter condition function
+ * @property {ConditionFunction<T[keyof T]>} [initialCondition] - Optional initial filter condition function
  */
 type UseTagFilteredThumbnailListItemsProps<T> = {
   allItems: T[];
   initialTag: string;
-  initialCondition?: ConditionFunction<any>;
+  initialCondition?: ConditionFunction<T[keyof T]>;
 };
 
 /**
@@ -23,7 +23,7 @@ type UseTagFilteredThumbnailListItemsProps<T> = {
  * @param {UseTagFilteredThumbnailListItemsProps<T>} props - Hook configuration
  * @param {T[]} props.allItems - Array of all items to filter
  * @param {string} props.initialTag - Initial property key to filter by
- * @param {ConditionFunction<any>} [props.initialCondition] - Optional initial filter condition
+ * @param {ConditionFunction<T[keyof T]>} [props.initialCondition] - Optional initial filter condition
  * @returns {Object} Hook return values
  * @returns {Object} returns.tagAndCondition - Current tag and condition configuration
  * @returns {function} returns.setTagAndCondition - Function to update both tag and condition
@@ -46,7 +46,7 @@ const useTagFilteredThumbnailListItems = <T>({
 }: UseTagFilteredThumbnailListItemsProps<T>) => {
   const [tagAndCondition, setTagAndCondition] = useState({ tag: initialTag, condition: initialCondition });
 
-  const setTagWithCondition = (t: string, c: (value: any) => boolean) => {
+  const setTagWithCondition = (t: string, c: ConditionFunction<T[keyof T]>) => {
     setTagAndCondition({ tag: t, condition: c });
   };
 
