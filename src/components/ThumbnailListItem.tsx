@@ -8,10 +8,10 @@ const ThumbnailListItem = (props: ThumbnailListItemProps) => {
   return (
     <>
       <Card sx={{ display: 'flex' }}>
-        <CardActionArea disabled={!props.onClick} onClick={() => props.onClick(props.id)}>
+        <CardActionArea disabled={!props.onClick} onClick={props.onClick ? () => props.onClick(props.id) : undefined}>
           <Stack direction="row" width="100%">
-            <img src={props.thumbnailUrl} width={'45%'} />
-            <Stack direction="row" justifyContent="space-between" width="100%" gap={1}>
+            <img src={props.thumbnailUrl} width={'38.2%'} alt={props.title} style={{ objectFit: 'cover', height: '100%' }} />
+            <Stack direction="row" justifyContent="space-between" flex={1} gap={1}>
               <ThumbnailListItemTitle title={props.title} subTitle={props.subTitle} />
               {props.infoLabel}
             </Stack>

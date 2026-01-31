@@ -3,6 +3,7 @@ import ThumbnailListFilterTag from './ThumbnailListFilterTag';
 import { useThumbnailListItemContext } from './ThumbnailListItemContext';
 import { Breakpoint } from '@mui/material';
 import { ReactNode } from 'react';
+import { AlignType } from '../types/AlignType';
 
 function ThumbnailListFilterTags<T>(props: ThumbnailListFilterTagsProps<T>) {
   const { tagFilterCallback, tagAndCondition } = useThumbnailListItemContext();

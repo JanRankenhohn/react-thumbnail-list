@@ -4,6 +4,7 @@ import SortIcon from '@mui/icons-material/Sort';
 import DropdownInput from './DropdownInput';
 import { useThumbnailListItemContext } from './ThumbnailListItemContext';
 import { logDev } from '../utils/logHelper';
+import { AlignType } from '../types/AlignType';
 
 function ThumbnailListHeaderSort<T>(props: ThumbnailListHeaderSortProps<T>) {
   const { setSortAscending, sortAscending, setSortBy, sortBy } = useThumbnailListItemContext();

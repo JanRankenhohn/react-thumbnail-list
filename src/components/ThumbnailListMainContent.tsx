@@ -6,8 +6,7 @@ import { useMemo } from 'react';
 import { logDev } from '../utils/logHelper';
 
 const RatioWrapper = styled('div')(() => ({
-  // Assuming a 16:9 aspect ratio
-  paddingTop: '27.75%', // 9 / 16 = 0.5625
+  paddingTop: '27.75%', // responsive card height
   position: 'relative',
   width: '100%',
   '& > *': {
