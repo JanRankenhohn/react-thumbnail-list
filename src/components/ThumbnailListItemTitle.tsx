@@ -4,6 +4,16 @@ import EllipsisContainer from './EllipsisContainer';
 import { Stack } from '@mui/system';
 import { logDev } from '../utils/logHelper';
 
+/**
+ * Component that displays the title and subtitle of a thumbnail list item.
+ * Text is automatically truncated with ellipsis when it exceeds the available space.
+ * The number of visible lines adjusts based on screen size.
+ * 
+ * @param {Object} props - Component props
+ * @param {string} props.title - Primary title text displayed in bold
+ * @param {ReactNode} props.subTitle - Secondary text displayed below the title
+ * @returns {JSX.Element} The rendered title section with ellipsis overflow handling
+ */
 export default function ThumbnailListItemTitle(props: { title: string; subTitle: ReactNode }) {
   const StyledCardContent = styled('div')((p) => ({
     [p.theme.breakpoints.up('xs')]: {

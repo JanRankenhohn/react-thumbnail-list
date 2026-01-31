@@ -12,10 +12,27 @@ import ThumbnailListHeader from './ThumbnailListHeader';
 import { logDev } from '../utils/logHelper';
 
 /**
- * Main Component: Renders all sub components
- * Includes ThumbnailList Provider for context data
- * @param props react children, items
- * @returns component
+ * Main ThumbnailList component that displays a list of items with thumbnails.
+ * Provides context for child components and manages state for sorting, filtering, and searching.
+ * 
+ * This component uses a compound component pattern with Header and MainContent sub-components.
+ * 
+ * @template T - The type of items in the list (must extend ThumbnailListItemInterface)
+ * @param {ThumbnailListProps<T>} props - Component props
+ * @param {ReactNode} props.children - Child components (typically Header and MainContent)
+ * @param {T[]} props.items - Array of items to display in the list
+ * @param {ThumbnailListConfigurationInterface<T>} [props.config] - Optional configuration for sorting and filtering
+ * @returns {JSX.Element} The rendered ThumbnailList component with context provider
+ * 
+ * @example
+ * ```tsx
+ * <ThumbnailList items={items} config={{ sortBy: 'title', sortAscending: true }}>
+ *   <ThumbnailList.Header>
+ *     <ThumbnailList.Header.SearchField />
+ *   </ThumbnailList.Header>
+ *   <ThumbnailList.MainContent />
+ * </ThumbnailList>
+ * ```
  */
 function ThumbnailList<T extends ThumbnailListItemInterface>(props: ThumbnailListProps<T>) {
   const combinedConfig = {

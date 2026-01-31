@@ -24,6 +24,23 @@ const RatioWrapper = styled('div')(() => ({
   },
 }));
 
+/**
+ * Main content area that displays the grid of thumbnail items.
+ * Handles responsive layout with Material-UI Grid and shows a loading indicator.
+ * 
+ * @param {ThumbnailListMainContentProps} props - Component props
+ * @param {BreakpointType} [props.muiBreakpoints={ xs: 12, sm: 6, md: 6, lg: 4, xl: 3 }] - Grid column spans for different screen sizes
+ * @param {number} [props.spacing=2] - Spacing between grid items
+ * @returns {JSX.Element} The rendered grid of thumbnail items with loading indicator
+ * 
+ * @example
+ * ```tsx
+ * <ThumbnailList.MainContent 
+ *   spacing={3} 
+ *   muiBreakpoints={{ xs: 12, sm: 6, md: 4, lg: 3, xl: 2 }} 
+ * />
+ * ```
+ */
 export default function ThumbnailListMainContent({
   spacing = 2,
   muiBreakpoints = { xs: 12, sm: 6, md: 6, lg: 4, xl: 3 },
